@@ -9,10 +9,11 @@ const Profile = ({ profile }) => {
     <div className="profile-card">
       <h3>Profile</h3>
       <div className="profile-info-row">
-        <strong>Username:</strong> <span>{profile.username}</span>
+        <strong>Username:</strong> <span>{profile.email}</span>
       </div>
       <div className="profile-info-row">
-        <strong>Free Minutes:</strong> <span>{profile.free_minutes}</span>
+        <strong>Free Minutes:</strong>{" "}
+        <span>{profile.transcription_minutes}</span>
       </div>
     </div>
   );

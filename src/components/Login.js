@@ -6,7 +6,7 @@ const Login = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const apiUrl = process.env.REACT_APP_API_URL;
+  const apiUrl = "http://localhost:8788";
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -15,10 +15,11 @@ const Login = ({ onLogin }) => {
       setError("Please enter a valid email address.");
       return;
     }
+    console.log("login", apiUrl);
 
     try {
-      const response = await axios.post(`${apiUrl}/login`, {
-        username: email,
+      const response = await axios.post(`${apiUrl}/api/login`, {
+        email,
         password,
       });
       const { access_token } = response.data;

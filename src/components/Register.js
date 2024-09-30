@@ -9,7 +9,7 @@ const Register = ({ onRegister }) => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = "http://localhost:8788";
 
     if (!validateEmail(email)) {
       setError("Please enter a valid email address.");
@@ -17,8 +17,8 @@ const Register = ({ onRegister }) => {
     }
 
     try {
-      await axios.post(`${apiUrl}/register`, {
-        username: email,
+      await axios.post(`${apiUrl}/api/register`, {
+        email: email,
         password,
       });
       onRegister();

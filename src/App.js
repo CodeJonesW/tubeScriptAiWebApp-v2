@@ -18,16 +18,13 @@ const App = () => {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem("authToken");
-        const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/profile`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        setProfile(response.data);
+        const response = await axios.get(`http://localhost:8788/api/profile`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setProfile(response.data.user);
         setDisplayComponent("analyze");
       } catch (error) {
         setIsAuthenticated(false);
