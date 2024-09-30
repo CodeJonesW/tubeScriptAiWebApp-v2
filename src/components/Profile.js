@@ -12,8 +12,7 @@ const Profile = ({ profile }) => {
         <strong>Username:</strong> <span>{profile.email}</span>
       </div>
       <div className="profile-info-row">
-        <strong>Free Minutes:</strong>{" "}
-        <span>{profile.transcription_minutes}</span>
+        <strong>Free Minutes:</strong> <span>{profile.analyze_requests}</span>
       </div>
     </div>
   );
