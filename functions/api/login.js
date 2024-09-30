@@ -2,7 +2,7 @@ export async function onRequest(context) {
   console.log("Login user", context);
   const isLocal = context.request.url === "http://localhost:8788/api/login";
   const workerUrl = isLocal ? "http://localhost:8787" : context.env.WORKER_URL;
-  const url = `${workerUrl}/login`;
+  const url = `${workerUrl}/api/login`;
 
   const requestBody = await context.request.json();
   const { email, password } = requestBody;
@@ -37,6 +37,7 @@ export async function onRequest(context) {
       headers: { "Content-Type": "application/json" },
     });
   } catch (error) {
+    console.log(error);
     return new Response(JSON.stringify({ error: "Failed to register user" }), {
       status: 500,
       headers: { "Content-Type": "application/json" },
