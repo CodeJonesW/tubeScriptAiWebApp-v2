@@ -1,6 +1,9 @@
 export async function onRequest(context) {
   console.log("Registering user", context);
-  const url = "http://localhost:8787/api/register";
+  const isLocal = context.env.NODE_ENV === "development";
+
+  const workerUrl = isLocal ? "http://localhost:8787" : context.env.WORKER_URL;
+  const url = `http://${workerUrl}/api/register`;
 
   const requestBody = await context.request.json();
   const { email, password } = requestBody;

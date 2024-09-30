@@ -1,5 +1,10 @@
 export async function onRequest(context) {
-  const url = "http://localhost:8787/api/profile";
+  // Determine if running locally
+  const isLocal = context.env.NODE_ENV === "development";
+
+  // Set the appropriate worker URL
+  const workerUrl = isLocal ? "http://localhost:8787" : context.env.WORKER_URL;
+  const url = `${workerUrl}/api/profile`;
 
   const init = {
     method: "GET",
