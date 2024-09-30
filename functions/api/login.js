@@ -1,7 +1,9 @@
 export async function onRequest(context) {
   console.log("Login user", context);
   const isLocal = context.request.url === "http://localhost:8788/api/login";
-  const workerUrl = isLocal ? "http://localhost:8787" : context.env.WORKER_URL;
+  const workerUrl = isLocal
+    ? "http://localhost:8787"
+    : "https://tube-script-ai-worker.williamjonescodes.workers.dev/";
   const url = `${workerUrl}/api/login`;
 
   const requestBody = await context.request.json();

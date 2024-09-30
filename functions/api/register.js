@@ -1,10 +1,12 @@
-export async function onRequest(context) {
-  console.log("Registering user", context);
-  const isLocal = context.request.url === "http://localhost:8788/api/register";
-  const workerUrl = isLocal ? "http://localhost:8787" : context.env.WORKER_URL;
+export async function onRequest({ request, env }) {
+  console.log("Registering user", request);
+  const isLocal = request.url === "http://localhost:8788/api/register";
+  const workerUrl = isLocal
+    ? "http://localhost:8787"
+    : "https://tube-script-ai-worker.williamjonescodes.workers.dev/";
   const url = `${workerUrl}/api/register`;
 
-  const requestBody = await context.request.json();
+  const requestBody = await request.json();
   const { email, password } = requestBody;
   console.log("Request body", requestBody);
 
