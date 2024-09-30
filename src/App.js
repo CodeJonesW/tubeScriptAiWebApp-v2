@@ -8,11 +8,6 @@ import axios from "axios";
 import "./App.css";
 
 const App = () => {
-  const isLocal = window.location.hostname === "localhost";
-  const API_URL = isLocal
-    ? process.env.REACT_APP_API_URL_LOCAL
-    : process.env.REACT_APP_API_URL_PROD;
-
   const [isAuthenticated, setIsAuthenticated] = useState(
     !!localStorage.getItem("authToken")
   );
@@ -20,6 +15,10 @@ const App = () => {
   const [displayComponent, setDisplayComponent] = useState("welcome");
 
   useEffect(() => {
+    const isLocal = window.location.hostname === "localhost";
+    const API_URL = isLocal
+      ? process.env.REACT_APP_API_URL_LOCAL
+      : process.env.REACT_APP_API_URL_PROD;
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem("authToken");
