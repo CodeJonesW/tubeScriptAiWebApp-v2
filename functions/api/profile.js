@@ -2,7 +2,7 @@ export async function onRequest(context) {
   const isLocal = context.request.url === "http://localhost:8788/api/profile";
   const workerUrl = isLocal
     ? "http://localhost:8787"
-    : "https://tube-script-ai-worker.williamjonescodes.workers.dev/";
+    : "https://tube-script-ai-worker.williamjonescodes.workers.dev";
   const url = `${workerUrl}/api/profile`;
 
   const init = {

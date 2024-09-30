@@ -3,7 +3,7 @@ export async function onRequest({ request, env }) {
   const isLocal = request.url === "http://localhost:8788/api/register";
   const workerUrl = isLocal
     ? "http://localhost:8787"
-    : "https://tube-script-ai-worker.williamjonescodes.workers.dev/";
+    : "https://tube-script-ai-worker.williamjonescodes.workers.dev";
   const url = `${workerUrl}/api/register`;
 
   const requestBody = await request.json();
