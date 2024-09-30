@@ -20,7 +20,7 @@
     "build": "react-scripts build",
     "dev": "react-scripts start",
     "start-server": "nodemon server.js",
-    "start-wrangler": "npx wrangler pages dev ./build --port 8788"
+    "wrangler": "npx wrangler pages dev ./build --port 8788"
   },
   "engines": {
     "node": "18.x"

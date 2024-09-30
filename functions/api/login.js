@@ -1,11 +1,7 @@
 export async function onRequest(context) {
   console.log("Login user", context);
-  // Determine if running locally
-  const isLocal = context.env.NODE_ENV === "development";
-
-  // Set the appropriate worker URL
+  const isLocal = context.request.url === "http://localhost:8788/api/login";
   const workerUrl = isLocal ? "http://localhost:8787" : context.env.WORKER_URL;
-
   const url = `${workerUrl}/login`;
 
   const requestBody = await context.request.json();
