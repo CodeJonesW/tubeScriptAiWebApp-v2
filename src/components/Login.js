@@ -3,11 +3,6 @@ import axios from "axios";
 import { validateEmail } from "../utils/account_verify";
 
 const Login = ({ onLogin }) => {
-  // const isLocal = window.location.hostname === "localhost";
-  // const API_URL = isLocal
-  //   ? process.env.REACT_APP_API_URL_LOCAL
-  //   : process.env.REACT_APP_API_URL_PROD;
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
