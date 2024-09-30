@@ -8,6 +8,11 @@ import axios from "axios";
 import "./App.css";
 
 const App = () => {
+  const isLocal = window.location.hostname === "localhost";
+  const API_URL = isLocal
+    ? process.env.REACT_APP_API_URL_LOCAL
+    : process.env.REACT_APP_API_URL_PROD;
+
   const [isAuthenticated, setIsAuthenticated] = useState(
     !!localStorage.getItem("authToken")
   );
@@ -18,7 +23,7 @@ const App = () => {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem("authToken");
-        const response = await axios.get(`http://localhost:8788/api/profile`, {
+        const response = await axios.get(`${API_URL}/api/profile`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,

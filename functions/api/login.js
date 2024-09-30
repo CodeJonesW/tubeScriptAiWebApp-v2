@@ -1,6 +1,6 @@
 export async function onRequest(context) {
   console.log("Login user", context);
-  const url = "http://localhost:8787/api/login";
+  const url = `http://localhost:8787/api/login`;
 
   const requestBody = await context.request.json();
   const { email, password } = requestBody;

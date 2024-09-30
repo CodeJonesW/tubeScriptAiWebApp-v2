@@ -5,6 +5,11 @@ import Results from "./Results";
 import axios from "axios";
 
 const Analyze = ({ profile, setProfile }) => {
+  const isLocal = window.location.hostname === "localhost";
+  const API_URL = isLocal
+    ? process.env.REACT_APP_API_URL_LOCAL
+    : process.env.REACT_APP_API_URL_PROD;
+
   const [result, setResult] = useState("");
   const [transcript, setTranscript] = useState("");
   const [status, setStatus] = useState("");
@@ -16,7 +21,7 @@ const Analyze = ({ profile, setProfile }) => {
     const intervalId = setInterval(async () => {
       try {
         const token = localStorage.getItem("authToken");
-        const statusResponse = await axios.get(`${apiUrl}/status/${taskId}`, {
+        const statusResponse = await axios.get(`${API_URL}/status/${taskId}`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,

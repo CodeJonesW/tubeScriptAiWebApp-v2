@@ -3,13 +3,17 @@ import axios from "axios";
 import { validateEmail } from "../utils/account_verify";
 
 const Register = ({ onRegister }) => {
+  const isLocal = window.location.hostname === "localhost";
+  const API_URL = isLocal
+    ? process.env.REACT_APP_API_URL_LOCAL
+    : process.env.REACT_APP_API_URL_PROD;
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    const apiUrl = "http://localhost:8788";
 
     if (!validateEmail(email)) {
       setError("Please enter a valid email address.");
@@ -17,12 +21,13 @@ const Register = ({ onRegister }) => {
     }
 
     try {
-      await axios.post(`${apiUrl}/api/register`, {
+      await axios.post(`${API_URL}/api/register`, {
         email: email,
         password,
       });
       onRegister();
     } catch (err) {
+      console.log(err);
       setError("Registration failed. Please try again.");
     }
   };
