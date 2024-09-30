@@ -15,14 +15,14 @@ const App = () => {
   const [displayComponent, setDisplayComponent] = useState("welcome");
 
   useEffect(() => {
-    const isLocal = window.location.hostname === "localhost";
-    const API_URL = isLocal
-      ? process.env.REACT_APP_API_URL_LOCAL
-      : process.env.REACT_APP_API_URL_PROD;
+    // const isLocal = window.location.hostname === "localhost";
+    // const API_URL = isLocal
+    //   ? process.env.REACT_APP_API_URL_LOCAL
+    //   : process.env.REACT_APP_API_URL_PROD;
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem("authToken");
-        const response = await axios.get(`${API_URL}/api/profile`, {
+        const response = await axios.get(`api/profile`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
