@@ -3,7 +3,6 @@ import "../css/HowToUse.css"; // Import the CSS for this component
 import InputForm from "./InputForm";
 import Results from "./Results";
 import axios from "axios";
-import { formatTextToHTML } from "../utils/format_text";
 
 const Analyze = () => {
   const [result, setResult] = useState("");
@@ -34,7 +33,6 @@ const Analyze = () => {
           },
         }
       );
-      // const formattedHtml = formatTextToHTML(response.data.plan);
       setResult(response.data.plan);
       setLoading(false);
     } catch (error) {
