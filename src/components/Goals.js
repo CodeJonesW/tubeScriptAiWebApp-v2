@@ -15,6 +15,7 @@ const GoalsList = ({ goals }) => {
         },
       });
       console.log("Goal response", response.data);
+      setGoalToShow(response.data);
     } catch (error) {
       console.error("Error fetching goal:", error);
     }

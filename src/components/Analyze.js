@@ -6,16 +6,11 @@ import axios from "axios";
 
 const Analyze = () => {
   const [result, setResult] = useState("");
-  const [transcript, setTranscript] = useState("");
-  const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   const handleAnalyze = async (goal, prompt, timeline) => {
     setLoading(true);
     setResult("");
-    setStatus("");
-    setTranscript("");
 
     try {
       const token = localStorage.getItem("authToken");
@@ -44,12 +39,7 @@ const Analyze = () => {
   return (
     <div className="main-container">
       <div className="form-container">
-        <InputForm
-          loading={loading}
-          onSubmit={handleAnalyze}
-          error={error}
-          status={status}
-        />
+        <InputForm loading={loading} onSubmit={handleAnalyze} />
       </div>
       <div className="results-container">
         {result && <Results result={result} />}
