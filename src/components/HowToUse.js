@@ -25,8 +25,8 @@ const HowToUseCard = ({ displayComponent }) => {
           </li>
         </ol>
         <p>
-          My Goal Creator offers a set number of free analyses. Premium features
-          coming soon.
+          My Goal Creator offers a set number of free goal planning analyses.
+          Premium features coming soon.
         </p>
         <p>Start achieving your goals with AI assistance today!</p>
         <div className="button-group" style={{ margin: "24px 24px 24px 24px" }}>
