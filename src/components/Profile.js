@@ -17,18 +17,24 @@ const Profile = ({ profile, isShowingGoals, showGoals, showGoalCreator }) => {
       </div>
       {!isShowingGoals ? (
         <div className="profile-info-row">
-          <strong>Goals:</strong>{" "}
           <span>
-            <button className="primary-button" onClick={showGoals}>
+            <button
+              style={{ marginTop: "16px", maxWidth: "144px" }}
+              className="primary-button"
+              onClick={showGoals}
+            >
               View Goals
             </button>
           </span>
         </div>
       ) : (
         <div className="profile-info-row">
-          <strong>Goals:</strong>{" "}
           <span>
-            <button className="primary-button" onClick={showGoalCreator}>
+            <button
+              style={{ marginTop: "16px", maxWidth: "144px" }}
+              className="primary-button"
+              onClick={showGoalCreator}
+            >
               Create Goal
             </button>
           </span>

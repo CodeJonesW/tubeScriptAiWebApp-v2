@@ -23,7 +23,7 @@ const GoalsList = ({ goals }) => {
 
   return (
     <div className="goals-list">
-      <h2>My Goals</h2>
+      <h2>My Goals - Coming Soon</h2>
       <ul>
         {goals.length > 0 ? (
           goals.map((goal, index) => (
