@@ -49,6 +49,10 @@ const App = () => {
     setShowGoals(true);
   };
 
+  const handleShowGoalCreator = () => {
+    setShowGoals(false);
+  };
+
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     setIsAuthenticated(false);
@@ -80,7 +84,7 @@ const App = () => {
         <div className="onboarding-container">
           {displayComponent === "welcome" ? (
             <div>
-              <h2>AchieveGoals.Ai</h2>
+              <h2>My Goal Creator</h2>
               <HowToUseCard displayComponent={setDisplayComponent} />
             </div>
           ) : null}
@@ -110,7 +114,7 @@ const App = () => {
         <div className="app-container">
           <div style={{ width: "100%" }}>
             <div className="nav-container">
-              <h2>Achieve.ai</h2>
+              <h2>My Goal Creator</h2>
               <div className="logout-container">
                 <button className="logout-button" onClick={handleLogout}>
                   Logout
@@ -118,7 +122,12 @@ const App = () => {
               </div>
             </div>
             <div className="profile-container">
-              <Profile profile={profile} showGoals={handleShowGoals} />
+              <Profile
+                profile={profile}
+                showGoals={handleShowGoals}
+                showGoalCreator={handleShowGoalCreator}
+                isShowingGoals={showGoals}
+              />
             </div>
           </div>
           {!showGoals ? <Analyze /> : <Goals goals={goals} />}

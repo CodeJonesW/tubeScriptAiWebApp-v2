@@ -4,7 +4,7 @@ import "../css/HowToUse.css";
 const HowToUseCard = ({ displayComponent }) => {
   return (
     <div className="how-to-use-card">
-      <h2 className="how-to-use-title">How to Use Achieve.ai</h2>
+      <h2 className="how-to-use-title">How to Use My Goal Creator</h2>
       <div className="how-to-use-content">
         <p>
           Welcome to Achieve.ai! This app is designed to help you set and track
@@ -15,21 +15,21 @@ const HowToUseCard = ({ displayComponent }) => {
             <strong>Define Your Goal</strong>
           </li>
           <li>
-            <strong>:</strong> Add Areas of Focus
+            <strong>Add Areas of Focus</strong>
           </li>
           <li>
-            <strong>:</strong> Select a Timeline
+            <strong>Select a Timeline</strong>
           </li>
           <li>
-            <strong>Achieve.ai</strong> will show you the way!
+            <strong>My Goal Creator will show you the way!</strong>
           </li>
         </ol>
         <p>
-          Achieve.ai offers a set number of free analyses each month. Check your
-          profile to monitor your usage and explore premium options if needed.
+          My Goal Creator offers a set number of free analyses. Premium features
+          coming soon.
         </p>
         <p>Start achieving your goals with AI assistance today!</p>
-        <div className="button-group" style={{ margin: "40px 60px 0px 60px" }}>
+        <div className="button-group" style={{ margin: "24px 24px 24px 24px" }}>
           <button
             onClick={() => displayComponent("register")}
             className="primary-button"

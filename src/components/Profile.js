@@ -1,6 +1,6 @@
 import React from "react";
 
-const Profile = ({ profile, showGoals }) => {
+const Profile = ({ profile, isShowingGoals, showGoals, showGoalCreator }) => {
   if (!profile) {
     return <div className="loading-message">Loading...</div>;
   }
@@ -15,12 +15,21 @@ const Profile = ({ profile, showGoals }) => {
         <strong>Remaining Analyze Requests:</strong>{" "}
         <span>{profile.analyze_requests}</span>
       </div>
-      <div className="profile-info-row">
-        <strong>Goals:</strong>{" "}
-        <span>
-          <button onClick={showGoals}>View Goals</button>
-        </span>
-      </div>
+      {!isShowingGoals ? (
+        <div className="profile-info-row">
+          <strong>Goals:</strong>{" "}
+          <span>
+            <button onClick={showGoals}>View Goals</button>
+          </span>
+        </div>
+      ) : (
+        <div className="profile-info-row">
+          <strong>Goals:</strong>{" "}
+          <span>
+            <button onClick={showGoalCreator}>Create Goal</button>
+          </span>
+        </div>
+      )}
     </div>
   );
 };
