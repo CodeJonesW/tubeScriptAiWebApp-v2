@@ -67,7 +67,7 @@ h2 {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  max-width: 400px;
+  max-width: 300px;
   background-color: #fff;
   padding: 40px;
   border-radius: 8px;
@@ -226,7 +226,6 @@ h2 {
   padding: 20px;
   width: 100%;
   margin-bottom: 200px;
-  width: 300px;
 }
 
 .nav-container {
