@@ -19,14 +19,18 @@ const Profile = ({ profile, isShowingGoals, showGoals, showGoalCreator }) => {
         <div className="profile-info-row">
           <strong>Goals:</strong>{" "}
           <span>
-            <button onClick={showGoals}>View Goals</button>
+            <button className="primary-button" onClick={showGoals}>
+              View Goals
+            </button>
           </span>
         </div>
       ) : (
         <div className="profile-info-row">
           <strong>Goals:</strong>{" "}
           <span>
-            <button onClick={showGoalCreator}>Create Goal</button>
+            <button className="primary-button" onClick={showGoalCreator}>
+              Create Goal
+            </button>
           </span>
         </div>
       )}
