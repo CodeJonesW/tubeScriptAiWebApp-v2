@@ -7,8 +7,8 @@ const HowToUseCard = ({ displayComponent }) => {
       <h2 className="how-to-use-title">How to Use My Goal Creator</h2>
       <div className="how-to-use-content">
         <p>
-          Welcome to Achieve.ai! This app is designed to help you set and track
-          your goals using AI insights. Here's how to get started:
+          Welcome to My Goal Creator! This app is designed to help you set and
+          track your goals using AI insights. Here's how to get started:
         </p>
         <ol>
           <li>
