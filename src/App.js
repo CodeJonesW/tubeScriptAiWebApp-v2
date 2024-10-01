@@ -27,7 +27,6 @@ const App = () => {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log("Profile response", response.data);
         setProfile(response.data.user);
         setGoals(response.data.goals);
         setDisplayComponent("analyze");
