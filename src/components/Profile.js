@@ -12,7 +12,7 @@ const Profile = ({ profile, isShowingGoals, showGoals, showGoalCreator }) => {
         <strong>Username:</strong> <span>{profile.email}</span>
       </div>
       <div className="profile-info-row">
-        <strong>Remaining Analyze Requests:</strong>{" "}
+        <strong>Remaining Goal Requests:</strong>{" "}
         <span>{profile.analyze_requests}</span>
       </div>
       {!isShowingGoals ? (
