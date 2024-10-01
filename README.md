@@ -1,5 +1,5 @@
 # My Goal Creator
-- https://www.mygoalcreator.com
+- https://mygoalcreator.com
 
 ## Web Application 
 - created with React.js
