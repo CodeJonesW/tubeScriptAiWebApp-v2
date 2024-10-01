@@ -1,6 +1,6 @@
 import React from "react";
 
-const Profile = ({ profile }) => {
+const Profile = ({ profile, showGoals }) => {
   if (!profile) {
     return <div className="loading-message">Loading...</div>;
   }
@@ -12,7 +12,14 @@ const Profile = ({ profile }) => {
         <strong>Username:</strong> <span>{profile.email}</span>
       </div>
       <div className="profile-info-row">
-        <strong>Free Minutes:</strong> <span>{profile.analyze_requests}</span>
+        <strong>Remaining Analyze Requests:</strong>{" "}
+        <span>{profile.analyze_requests}</span>
+      </div>
+      <div className="profile-info-row">
+        <strong>Goals:</strong>{" "}
+        <span>
+          <button onClick={showGoals}>View Goals</button>
+        </span>
       </div>
     </div>
   );

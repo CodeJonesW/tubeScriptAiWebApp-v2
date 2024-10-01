@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 
-const InputForm = ({ onSubmit, analyzing, error, status }) => {
-  const [youtubeUrl, setYoutubeUrl] = useState("https://vimeo.com/154191595");
-  const [prompt, setPrompt] = useState("summarize");
-  const [loading, setLoading] = useState(false);
+const InputForm = ({ onSubmit, loading }) => {
+  const [goal, setGoal] = useState("");
+  const [prompt, setPrompt] = useState("");
+  const [timeline, setTimeline] = useState("1 year");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    await onSubmit(youtubeUrl, prompt);
-    setLoading(false);
+    await onSubmit(goal, prompt, timeline);
   };
 
   return (
@@ -18,34 +16,43 @@ const InputForm = ({ onSubmit, analyzing, error, status }) => {
         <div className="input-group">
           <input
             type="text"
-            placeholder="Enter YouTube URL"
-            value={youtubeUrl}
-            onChange={(e) => setYoutubeUrl(e.target.value)}
+            placeholder="Type your goal..."
+            value={goal}
+            onChange={(e) => setGoal(e.target.value)}
             className="form-input"
             required
           />
         </div>
         <div className="input-group">
           <textarea
-            placeholder="Enter your prompt (e.g., Summarize the video)"
+            placeholder="Areas of focus..."
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             className="form-textarea"
-            required
           />
         </div>
-        <button
-          type="submit"
-          className="primary-button"
-          disabled={loading || analyzing}
-        >
-          {loading || analyzing ? (
-            <p className="status-message">{status || "Processing..."}</p>
-          ) : (
-            "Analyze Video"
-          )}
+        <div className="input-group">
+          <select
+            value={timeline}
+            onChange={(e) => setTimeline(e.target.value)}
+            className="form-select"
+            required
+          >
+            <option value="" disabled>
+              Select Timeline...
+            </option>
+            <option value="1 day">1 Day</option>
+            <option value="1 week">1 Week</option>
+            <option value="1 month">1 Month</option>
+            <option value="3 months">3 Months</option>
+            <option value="6 months">6 Months</option>
+            <option value="1 year">1 Year</option>
+          </select>
+        </div>
+
+        <button type="submit" className="primary-button" disabled={loading}>
+          Show me the way
         </button>
-        {error ? <p className="error-message">{error}</p> : null}
       </form>
     </div>
   );

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Profile from "./components/Profile";
+import Goals from "./components/Goals";
 import Login from "./components/Login";
 import HowToUseCard from "./components/HowToUse";
 import Register from "./components/Register";
@@ -12,6 +13,8 @@ const App = () => {
     !!localStorage.getItem("authToken")
   );
   const [profile, setProfile] = useState(null);
+  const [goals, setGoals] = useState([]);
+  const [showGoals, setShowGoals] = useState(false);
   const [displayComponent, setDisplayComponent] = useState("welcome");
 
   useEffect(() => {
@@ -24,7 +27,9 @@ const App = () => {
             Authorization: `Bearer ${token}`,
           },
         });
+        console.log("Profile response", response.data);
         setProfile(response.data.user);
+        setGoals(response.data.goals);
         setDisplayComponent("analyze");
       } catch (error) {
         setIsAuthenticated(false);
@@ -39,6 +44,9 @@ const App = () => {
 
   const handleLogin = (token) => {
     setIsAuthenticated(true);
+  };
+  const handleShowGoals = () => {
+    setShowGoals(true);
   };
 
   const handleLogout = () => {
@@ -72,7 +80,7 @@ const App = () => {
         <div className="onboarding-container">
           {displayComponent === "welcome" ? (
             <div>
-              <h2>TubeScript.Ai</h2>
+              <h2>AchieveGoals.Ai</h2>
               <HowToUseCard displayComponent={setDisplayComponent} />
             </div>
           ) : null}
@@ -102,7 +110,7 @@ const App = () => {
         <div className="app-container">
           <div style={{ width: "100%" }}>
             <div className="nav-container">
-              <h2>TubeScript AI</h2>
+              <h2>Achieve.ai</h2>
               <div className="logout-container">
                 <button className="logout-button" onClick={handleLogout}>
                   Logout
@@ -110,10 +118,10 @@ const App = () => {
               </div>
             </div>
             <div className="profile-container">
-              <Profile profile={profile} />
+              <Profile profile={profile} showGoals={handleShowGoals} />
             </div>
           </div>
-          <Analyze profile={profile} setProfile={setProfile} />
+          {!showGoals ? <Analyze /> : <Goals goals={goals} />}
         </div>
       )}
     </>
