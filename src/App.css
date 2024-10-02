@@ -135,14 +135,10 @@ h2 {
   transition: background-color 0.3s ease;
 }
 
-.primary-button:hover {
-  background-color: #0056b3;
-}
-
-.primary-button:disabled {
+/* .primary-button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
-}
+} */
 
 .logout-container {
   margin-top: 20px;
