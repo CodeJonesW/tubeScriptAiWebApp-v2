@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Box, Card, Button, List, ListItem } from "@mui/material";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import Results from "./Results";
 import "../css/Goals.css";
 
