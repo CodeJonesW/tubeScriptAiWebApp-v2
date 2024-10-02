@@ -33,6 +33,7 @@ const App = () => {
         setDisplayComponent("analyze");
       } catch (error) {
         setIsAuthenticated(false);
+        localStorage.removeItem("authToken");
         console.error(error);
       }
     };
