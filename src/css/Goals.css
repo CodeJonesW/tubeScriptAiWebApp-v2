@@ -1,13 +1,9 @@
 .goal-item {
-  cursor: pointer; /* Changes the cursor to a pointer to indicate it's clickable */
-  color: blue; /* Sets the text color to blue like a typical link */
-  text-decoration: underline; /* Adds an underline to mimic a link */
-  padding: 5px 0; /* Add some padding for spacing */
-  border-bottom: 1px solid #eee;
-  list-style-type: none; /* Removes the bullet points */
+  cursor: pointer;
+  color: blue;
+  padding: 5px;
 }
 
 .goal-item:hover {
-  color: darkblue; /* Changes color on hover */
-  text-decoration: underline;
+  color: darkblue;
 }
