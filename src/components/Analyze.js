@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../css/HowToUse.css"; // Import the CSS for this component
+import "../css/HowToUse.css";
 import InputForm from "./InputForm";
 import Results from "./Results";
 import axios from "axios";

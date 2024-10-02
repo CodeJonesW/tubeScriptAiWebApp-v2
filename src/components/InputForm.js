@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const InputForm = ({ onSubmit, loading }) => {
   const [goal, setGoal] = useState("");
@@ -51,7 +52,7 @@ const InputForm = ({ onSubmit, loading }) => {
         </div>
 
         <button type="submit" className="primary-button" disabled={loading}>
-          Show me the way
+          {loading ? <CircularProgress /> : "Show me the way"}
         </button>
       </form>
     </div>
