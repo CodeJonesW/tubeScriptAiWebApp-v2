@@ -1,5 +1,4 @@
 export async function onRequest({ request, env }) {
-  console.log("Registering user", request);
   const isLocal = request.url === "http://localhost:8788/api/register";
   const workerUrl = isLocal
     ? "http://localhost:8787"
@@ -8,7 +7,6 @@ export async function onRequest({ request, env }) {
 
   const requestBody = await request.json();
   const { email, password } = requestBody;
-  console.log("Request body", requestBody);
 
   if (!email || !password) {
     return new Response(
@@ -28,11 +26,9 @@ export async function onRequest({ request, env }) {
       "x-password": password,
     },
   };
-  console.log("Sending request to", url, init);
 
   try {
     const response = await fetch(url, init);
-    console.log("Received response", response);
     const data = await response.json();
     return new Response(JSON.stringify(data), {
       status: response.status,

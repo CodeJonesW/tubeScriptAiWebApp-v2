@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { validateEmail } from "../utils/account_verify";
+import { Box, FormGroup, Button, TextField } from "@mui/material";
 
 const Register = ({ onRegister }) => {
   const [email, setEmail] = useState("");
@@ -28,35 +29,37 @@ const Register = ({ onRegister }) => {
   };
 
   return (
-    <div className="form-container">
+    <Box className="form-container">
       <h2 className="form-title">Register</h2>
       {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleRegister}>
-        <div className="input-group">
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="form-input"
-            required
-          />
-        </div>
-        <div className="input-group">
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="form-input"
-            required
-          />
-        </div>
-        <button type="submit" className="primary-button">
-          Register
-        </button>
+        <FormGroup>
+          <Box className="input-group">
+            <TextField
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="form-input"
+              required
+            />
+          </Box>
+          <Box className="input-group">
+            <TextField
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="form-input"
+              required
+            />
+          </Box>
+          <Button type="submit" variant="contained" className="primary-button">
+            Register
+          </Button>
+        </FormGroup>
       </form>
-    </div>
+    </Box>
   );
 };
 
