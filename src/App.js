@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "@mui/material";
+import { Button, Box } from "@mui/material";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import Profile from "./components/Profile";
 import Goals from "./components/Goals";
 import Login from "./components/Login";
@@ -62,8 +63,9 @@ const App = () => {
 
   const BackButton = () => {
     return (
-      <div style={{ width: "100%", marginBottom: "44px" }}>
-        <button
+      <Box style={{ width: "100%", marginBottom: "44px" }}>
+        <Button
+          variant="outlined"
           onClick={() => setDisplayComponent("welcome")}
           style={{
             width: "24px",
@@ -73,25 +75,26 @@ const App = () => {
           }}
           className="secondary-button"
         >
-          {"<"}
-        </button>
-      </div>
+          <ArrowBackIosNewIcon />
+        </Button>
+      </Box>
     );
   };
 
   return (
     <>
       {!isAuthenticated ? (
-        <div className="onboarding-container">
+        <Box className="onboarding-container">
           {displayComponent === "welcome" ? (
-            <div>
+            <Box>
               <h2>My Goal Creator</h2>
               <HowToUseCard displayComponent={setDisplayComponent} />
-            </div>
+            </Box>
           ) : null}
           {displayComponent === "register" ? (
             <>
               <BackButton />
+              <h2>My Goal Creator</h2>
               <Register
                 back={() => setDisplayComponent("welcome")}
                 onRegister={() => {
@@ -104,19 +107,20 @@ const App = () => {
           {displayComponent === "login" ? (
             <>
               <BackButton />
+              <h2>My Goal Creator</h2>
               <Login
                 back={() => setDisplayComponent("welcome")}
                 onLogin={handleLogin}
               />
             </>
           ) : null}
-        </div>
+        </Box>
       ) : (
-        <div className="app-container">
-          <div style={{ width: "100%" }}>
-            <div className="nav-container">
+        <Box className="app-container">
+          <Box style={{ width: "100%" }}>
+            <Box className="nav-container">
               <h2>My Goal Creator</h2>
-              <div className="logout-container">
+              <Box className="logout-container">
                 <Button
                   variant="outlined"
                   className="logout-button"
@@ -124,19 +128,19 @@ const App = () => {
                 >
                   Logout
                 </Button>
-              </div>
-            </div>
-            <div className="profile-container">
+              </Box>
+            </Box>
+            <Box className="profile-container">
               <Profile
                 profile={profile}
                 showGoals={handleShowGoals}
                 showGoalCreator={handleShowGoalCreator}
                 isShowingGoals={showGoals}
               />
-            </div>
-          </div>
+            </Box>
+          </Box>
           {!showGoals ? <Analyze /> : <Goals goals={goals} />}
-        </div>
+        </Box>
       )}
     </>
   );
