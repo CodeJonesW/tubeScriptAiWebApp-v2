@@ -144,15 +144,6 @@ h2 {
   cursor: not-allowed;
 }
 
-/* Logout Button */
-.logout-button {
-  background-color: #cf8585;
-}
-
-.logout-button:hover {
-  background-color: #cf8585;
-}
-
 .logout-container {
   margin-top: 20px;
 }

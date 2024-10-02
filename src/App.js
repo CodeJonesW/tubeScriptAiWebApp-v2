@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Button } from "@mui/material";
 import Profile from "./components/Profile";
 import Goals from "./components/Goals";
 import Login from "./components/Login";
@@ -115,9 +116,13 @@ const App = () => {
             <div className="nav-container">
               <h2>My Goal Creator</h2>
               <div className="logout-container">
-                <button className="logout-button" onClick={handleLogout}>
+                <Button
+                  variant="outlined"
+                  className="logout-button"
+                  onClick={handleLogout}
+                >
                   Logout
-                </button>
+                </Button>
               </div>
             </div>
             <div className="profile-container">
