@@ -77,15 +77,19 @@ export async function onRequest(context) {
       async start(controller) {
         while (true) {
           const { done, value } = await reader.read();
+          // console.log("Received chunk:", value);
           if (done) {
             console.log("Stream complete");
-            controller.close();
+            setTimeout(() => {
+              console.log("Closing stream");
+              controller.close();
+            }, 5000);
             break;
           }
 
           // Decode the Uint8Array into a string
           const chunk = decoder.decode(value, { stream: true });
-          // console.log("Received chunk:", chunk);
+          console.log("Received chunk in fn:", chunk);
 
           // Enqueue the encoded chunk to the stream controller
           controller.enqueue(encoder.encode(`data: ${chunk}\n\n`));
@@ -102,7 +106,7 @@ export async function onRequest(context) {
       },
     });
   } catch (error) {
-    console.error("Error during analysis:", error);
+    console.error("Error during analysis: in function", error);
     return new Response(
       JSON.stringify({ error: "Failed to process request" }),
       {
