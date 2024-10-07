@@ -12,7 +12,7 @@ const Analyze = () => {
     setLoading(true);
     setResult("");
     setBuffer(""); // Clear the buffer for new analysis
-    console.log("buffer:", buffer);
+    console.log("buffers:", buffer);
 
     try {
       const token = localStorage.getItem("authToken");
