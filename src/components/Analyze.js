@@ -2,34 +2,108 @@ import React, { useState } from "react";
 import "../css/HowToUse.css";
 import InputForm from "./InputForm";
 import Results from "./Results";
-import axios from "axios";
 
 const Analyze = () => {
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
+  const [buffer, setBuffer] = useState(""); // Buffer to store partial chunks
 
-  const handleAnalyze = async (goal, prompt, timeline) => {
+  const handleAnalyze = (goal, prompt, timeline) => {
     setLoading(true);
     setResult("");
+    setBuffer(""); // Clear the buffer for new analysis
+    console.log("buffer:", buffer);
 
     try {
       const token = localStorage.getItem("authToken");
-      const response = await axios.post(
-        `/api/analyze`,
-        {
-          goal,
-          prompt,
-          timeline,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
+
+      // Open EventSource connection with query parameters
+      const eventSource = new EventSource(
+        `/api/analyze?goal=${encodeURIComponent(
+          goal
+        )}&prompt=${encodeURIComponent(prompt)}&timeline=${encodeURIComponent(
+          timeline
+        )}&token=${encodeURIComponent(token)}`
       );
-      setResult(response.data.plan);
-      setLoading(false);
+
+      // Listen for streaming results
+      eventSource.onmessage = (event) => {
+        let newChunk = event.data;
+        console.log("Received chunk in UI:", newChunk);
+        if (newChunk === "event: done") {
+          console.log("Analysis complete.");
+          return;
+        }
+
+        // Concatenate incoming markdown chunks and immediately update the result incrementally
+        setBuffer((prevBuffer) => {
+          let updatedBuffer = prevBuffer + (newChunk === "" ? "\n" : newChunk);
+
+          // Split lines to handle bullet points and headings
+          const lines = updatedBuffer.split("\n");
+
+          let completeContent = ""; // To accumulate complete lines
+          let remainingBuffer = ""; // To store incomplete markdown
+
+          lines.forEach((line, index) => {
+            // Check if a line starts with a markdown heading or bullet point
+            if (/^\s*#{1,6}\s/.test(line) || /^\s*[-*]\s/.test(line)) {
+              // If it's a heading or bullet point, ensure it starts cleanly
+              if (index === lines.length - 1) {
+                remainingBuffer = line; // Incomplete line stays in buffer
+              } else {
+                completeContent += line + "\n"; // Add complete line to content
+              }
+            } else {
+              // For non-heading and non-bullet lines, handle normally
+              if (index === lines.length - 1) {
+                remainingBuffer = line; // Incomplete line stays in buffer
+              } else {
+                completeContent += line + "\n";
+              }
+            }
+          });
+
+          // Update the result with the complete content
+          setResult((prevResult) => prevResult + completeContent);
+
+          console.log("remaining buffer:", remainingBuffer);
+          // Return the remaining incomplete buffer for the next chunk
+          return remainingBuffer || "";
+        });
+      };
+
+      // Handle stream closing or errors
+      eventSource.onerror = (error) => {
+        console.error("Error during analysis:", error);
+        eventSource.close();
+        setBuffer((prevBuffer) => {
+          console.log("Final buffer:", prevBuffer);
+          if (prevBuffer) {
+            setResult((prevResult) => prevResult + prevBuffer);
+          }
+          return ""; // Clear buffer
+        });
+        setLoading(false); // Stop loading when stream is done or errored
+      };
+
+      eventSource.onopen = () => {
+        console.log("SSE connection opened.");
+      };
+      // Close the stream naturally when done
+      eventSource.addEventListener("close", () => {
+        console.log("Stream closed");
+        // If there's any data left in the buffer, add it to the result
+        // If there's any remaining data in the buffer, add it to the result
+        setBuffer((prevBuffer) => {
+          console.log("Final buffer:", prevBuffer);
+          if (prevBuffer) {
+            setResult((prevResult) => prevResult + prevBuffer);
+          }
+          return ""; // Clear buffer
+        });
+        setLoading(false);
+      });
     } catch (error) {
       setLoading(false);
       console.error("Error during analysis:", error);
