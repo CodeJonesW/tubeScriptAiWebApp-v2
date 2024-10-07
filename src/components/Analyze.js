@@ -2,18 +2,17 @@ import React, { useState } from "react";
 import "../css/HowToUse.css";
 import InputForm from "./InputForm";
 import Results from "./Results";
-import axios from "axios";
 
 const Analyze = () => {
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
   const [buffer, setBuffer] = useState(""); // Buffer to store partial chunks
-  const [remainingBuffer, setRemainingBuffer] = useState(""); // Buffer to store incomplete markdown
 
   const handleAnalyze = (goal, prompt, timeline) => {
     setLoading(true);
     setResult("");
     setBuffer(""); // Clear the buffer for new analysis
+    console.log("buffer:", buffer);
 
     try {
       const token = localStorage.getItem("authToken");
