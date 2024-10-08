@@ -50,7 +50,7 @@ const LandingPage = ({ displayComponent }) => {
                 variant="body1"
                 sx={{ marginBottom: "30px", fontSize: "18px" }}
               >
-                Set and track your goals with AI insights. Get started today!
+                Set and track your goals. Dive into the plan.
               </Typography>
               <Button
                 variant="contained"
