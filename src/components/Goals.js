@@ -1,4 +1,4 @@
-import Reactfrom "react";
+import React from "react";
 import { Box, Card, Button, List, ListItem } from "@mui/material";
 import Results from "./Results";
 import "../css/Goals.css";
@@ -6,11 +6,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { getGoal, clearGoal } from "../redux/slices/goalSlice";
 
 const GoalsList = ({ goals }) => {
-  console.log("Goals", goals);
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.authSlice);
   const { goal } = useSelector((state) => state.goalSlice);
-  console.log("Goal", goal);
   const handleShowGoal = async (goalId) => {
     dispatch(getGoal({ token, goalId }));
   };
