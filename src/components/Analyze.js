@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../css/HowToUse.css";
+import "../css/LandingPage.css";
 import InputForm from "./InputForm";
 import Results from "./Results";
 

@@ -5,7 +5,7 @@ import "./App.css";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import {
   Profile,
-  HowToUse,
+  LandingPage,
   Register,
   Login,
   Analyze,
@@ -74,17 +74,15 @@ const App = () => {
   return (
     <>
       {!token ? (
-        <Box className="onboarding-container">
+        <Box>
           {displayComponent === "welcome" ? (
             <Box>
-              <h2>My Goal Creator</h2>
-              <HowToUse displayComponent={setDisplayComponent} />
+              <LandingPage displayComponent={setDisplayComponent} />
             </Box>
           ) : null}
           {displayComponent === "register" ? (
-            <>
+            <Box className="onboarding-container">
               <BackButton />
-              <h2>My Goal Creator</h2>
               <Register
                 back={() => setDisplayComponent("welcome")}
                 onRegister={() => {
@@ -92,14 +90,13 @@ const App = () => {
                   setDisplayComponent("login");
                 }}
               />
-            </>
+            </Box>
           ) : null}
           {displayComponent === "login" ? (
-            <>
+            <Box className="onboarding-container">
               <BackButton />
-              <h2>My Goal Creator</h2>
               <Login back={() => setDisplayComponent("welcome")} />
-            </>
+            </Box>
           ) : null}
         </Box>
       ) : (
