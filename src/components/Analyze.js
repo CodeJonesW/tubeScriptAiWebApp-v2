@@ -35,7 +35,7 @@ const Analyze = () => {
         }
 
         // Concatenate incoming markdown chunks and immediately update the result incrementally
-        setBuffer(() => {
+        setBuffer((prevBuffer) => {
           let updatedBuffer = prevBuffer + (newChunk === "" ? "\n" : newChunk);
 
           // Split lines to handle bullet points and headings
