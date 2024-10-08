@@ -92,7 +92,6 @@ const Analyze = () => {
       // Close the stream naturally when done
       eventSource.addEventListener("close", () => {
         // console.log("Stream closed");
-        // If there's any data left in the buffer, add it to the result
         // If there's any remaining data in the buffer, add it to the result
         setBuffer((prevBuffer) => {
           // console.log("Final buffer:", prevBuffer);
