@@ -19,9 +19,9 @@ export default function configureAppStore(preloadedState) {
     enhancers: [monitorReducersEnhancer],
   });
 
-  if (process.env.NODE_ENV !== "production" && module.hot) {
-    module.hot.accept("./reducers", () => store.replaceReducer(rootReducer));
-  }
+  //   if (process.env.NODE_ENV !== "production" && module.hot) {
+  //     module.hot.accept("./reducers", () => store.replaceReducer(rootReducer));
+  //   }
 
   return store;
 }

@@ -1,0 +1,183 @@
+/* General Styles */
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.landing-page {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Hero Section */
+#hero {
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  padding: 0px 0;
+  text-align: left;
+}
+
+#hero h2 {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+#hero p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+#hero img {
+  width: 100%;
+  height: auto;
+}
+
+/* Features Section */
+#features {
+  background-color: #fff;
+  padding: 80px 0;
+}
+
+#features h4 {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+#features .MuiPaper-root {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+#features h6 {
+  font-size: 20px;
+}
+
+#features p {
+  font-size: 16px;
+}
+
+/* Testimonials Section */
+#testimonials {
+  background-color: #f9f9f9;
+  padding: 80px 0;
+}
+
+#testimonials h4 {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+#testimonials .MuiPaper-root {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background-color: #ffffff;
+}
+
+#testimonials p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+#testimonials .MuiPaper-root .subtitle2 {
+  font-size: 14px;
+}
+
+/* Pricing Section */
+#pricing {
+  background-color: #fff;
+  padding: 80px 0;
+}
+
+#pricing h4 {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+#pricing .MuiPaper-root {
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+#pricing h6 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+#pricing p {
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+#pricing button {
+  margin-top: 20px;
+}
+
+/* Call to Action Section */
+#cta {
+  padding: 80px 0;
+  text-align: center;
+}
+
+#cta h4 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#cta button {
+  font-size: 18px;
+  padding: 12px 24px;
+  border-radius: 5px;
+}
+
+/* Footer */
+#footer {
+  background-color: #333;
+  color: #fff;
+  padding: 40px 0;
+  text-align: center;
+}
+
+#footer p {
+  font-size: 14px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  #hero h2 {
+    font-size: 32px;
+  }
+
+  #hero p {
+    font-size: 16px;
+  }
+
+  #features h4,
+  #testimonials h4,
+  #pricing h4,
+  #cta h4 {
+    font-size: 28px;
+  }
+
+  #features h6,
+  #pricing h6 {
+    font-size: 18px;
+  }
+
+  #cta button {
+    font-size: 16px;
+  }
+}

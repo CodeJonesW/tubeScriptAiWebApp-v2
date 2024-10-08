@@ -1,4 +1,4 @@
-export { default as HowToUse } from "./HowToUse";
+export { default as LandingPage } from "./LandingPage";
 export { default as Analyze } from "./Analyze";
 export { default as Goals } from "./Goals";
 export { default as Login } from "./Login";
