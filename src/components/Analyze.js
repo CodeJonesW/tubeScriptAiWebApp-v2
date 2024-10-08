@@ -6,7 +6,7 @@ import Results from "./Results";
 const Analyze = () => {
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
-  const [buffer, setBuffer] = useState(""); // Buffer to store partial chunks
+  const [buffer, setBuffer] = useState("");
 
   const handleAnalyze = (goal, prompt, timeline) => {
     setLoading(true);
@@ -28,9 +28,9 @@ const Analyze = () => {
       // Listen for streaming results
       eventSource.onmessage = (event) => {
         let newChunk = event.data;
-        console.log("Received chunk in UI:", newChunk);
+        // console.log("Received chunk in UI:", newChunk);
         if (newChunk === "event: done") {
-          console.log("Analysis complete.");
+          // console.log("Analysis complete.");
           return;
         }
 
@@ -74,9 +74,10 @@ const Analyze = () => {
       // Handle stream closing or errors
       eventSource.onerror = (error) => {
         console.error("Error during analysis:", error);
+        console.log(buffer);
         eventSource.close();
         setBuffer((prevBuffer) => {
-          console.log("Final buffer:", prevBuffer);
+          // console.log("Final buffer:", prevBuffer);
           if (prevBuffer) {
             setResult((prevResult) => prevResult + prevBuffer);
           }
@@ -86,15 +87,15 @@ const Analyze = () => {
       };
 
       eventSource.onopen = () => {
-        console.log("SSE connection opened.");
+        // console.log("SSE connection opened.");
       };
       // Close the stream naturally when done
       eventSource.addEventListener("close", () => {
-        console.log("Stream closed");
+        // console.log("Stream closed");
         // If there's any data left in the buffer, add it to the result
         // If there's any remaining data in the buffer, add it to the result
         setBuffer((prevBuffer) => {
-          console.log("Final buffer:", prevBuffer);
+          // console.log("Final buffer:", prevBuffer);
           if (prevBuffer) {
             setResult((prevResult) => prevResult + prevBuffer);
           }
