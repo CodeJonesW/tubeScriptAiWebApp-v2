@@ -38,7 +38,11 @@ const LandingPage = ({ displayComponent }) => {
             <Grid item xs={12} md={6}>
               <Typography
                 variant="h2"
-                sx={{ fontWeight: "bold", marginBottom: "20px" }}
+                sx={{
+                  fontWeight: "bold",
+                  marginBottom: "20px",
+                  textAlign: "left",
+                }}
               >
                 My Goal Creator
               </Typography>
@@ -264,7 +268,7 @@ const LandingPage = ({ displayComponent }) => {
             Pricing Plans
           </Typography>
           <Grid container spacing={4} justifyContent="center">
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} md={4} mt={4} mb={4}>
               <Paper
                 elevation={6}
                 sx={{
@@ -274,22 +278,29 @@ const LandingPage = ({ displayComponent }) => {
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   borderRadius: "10px",
                   textAlign: "center",
+                  height: "95%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
                 }}
               >
-                <Typography
-                  variant="h6"
-                  sx={{ fontWeight: "bold", color: "#007bff" }}
-                >
-                  Free Plan
-                </Typography>
-                <List sx={{ color: "#555", marginBottom: "20px" }}>
-                  <ListItem>
-                    <ListItemText primary="- Basic AI Goal Planning and Analysis." />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="- Dive into goal subtopics." />
-                  </ListItem>
-                </List>
+                <Box>
+                  <Typography
+                    variant="h6"
+                    sx={{ fontWeight: "bold", color: "#007bff" }}
+                  >
+                    Free Plan
+                  </Typography>
+                  <List sx={{ color: "#555", marginBottom: "20px" }}>
+                    <ListItem>
+                      <ListItemText primary="- Basic AI Goal Planning and Analysis." />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText primary="- Dive into goal subtopics." />
+                    </ListItem>
+                  </List>
+                </Box>
+
                 <Button
                   variant="contained"
                   color="primary"
@@ -303,7 +314,7 @@ const LandingPage = ({ displayComponent }) => {
                 </Button>
               </Paper>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} md={4} mt={4} mb={4}>
               <Paper
                 elevation={6}
                 sx={{
@@ -313,32 +324,37 @@ const LandingPage = ({ displayComponent }) => {
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   borderRadius: "10px",
                   textAlign: "center",
+                  height: "95%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
                 }}
               >
-                <Typography
-                  variant="h6"
-                  sx={{ fontWeight: "bold", color: "#007bff" }}
-                >
-                  Pro Plan
-                </Typography>
-                <List sx={{ color: "#555", marginBottom: "20px" }}>
-                  <ListItem>
-                    <ListItemText primary="- Dive multiple levels into subtopics and get detailed insights." />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="- Track your progress with advanced analytics." />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="- Receive unlimited requests." />
-                  </ListItem>
-                </List>
+                <Box>
+                  <Typography
+                    variant="h6"
+                    sx={{ fontWeight: "bold", color: "#007bff" }}
+                  >
+                    Pro Plan
+                  </Typography>
+                  <List sx={{ color: "#555", marginBottom: "20px" }}>
+                    <ListItem>
+                      <ListItemText primary="- Dive multiple levels into subtopics and get detailed insights." />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText primary="- Track your progress with advanced analytics." />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText primary="- Unlimited requests." />
+                    </ListItem>
+                  </List>
+                </Box>
+
                 <Button
-                  variant="contained"
+                  variant="outlined"
                   color="secondary"
                   sx={{
                     marginTop: "20px",
-                    backgroundColor: "#007bff",
-                    "&:hover": { backgroundColor: "#339dff" },
                     padding: "10px 20px",
                   }}
                 >
