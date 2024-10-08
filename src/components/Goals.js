@@ -3,43 +3,33 @@ import axios from "axios";
 import { Box, Card, Button, List, ListItem } from "@mui/material";
 import Results from "./Results";
 import "../css/Goals.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getGoal, clearGoal } from "../redux/slices/goalSlice";
 
 const GoalsList = ({ goals }) => {
   console.log("Goals", goals);
-  const [result, setResults] = useState(null);
+  const dispatch = useDispatch();
   const { token } = useSelector((state) => state.authSlice);
+  const { goal } = useSelector((state) => state.goalSlice);
+  console.log("Goal", goal);
   const handleShowGoal = async (goalId) => {
-    console.log("Goal ID", goalId);
-    try {
-      const response = await axios.post(
-        `/api/goal`,
-        {
-          goalId,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      setResults(response.data.goal.plan);
-    } catch (error) {
-      console.error("Error fetching goal:", error);
-    }
+    dispatch(getGoal({ token, goalId }));
+  };
+
+  const handleClearGoal = () => {
+    dispatch(clearGoal());
   };
 
   return (
     <Box className="goals-list">
-      {result ? (
+      {goal ? (
         <Box>
           <Box style={{ display: "flex", justifyContent: "center" }}>
-            <Button onClick={() => setResults(null)} variant="outlined">
+            <Button onClick={handleClearGoal} variant="outlined">
               View All Goals
             </Button>
           </Box>
-          <Results result={result} />
+          <Results result={goal.plan} />
         </Box>
       ) : (
         <Card style={{ padding: "24px" }}>
