@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Box } from "@mui/material";
 import "./App.css";
@@ -13,18 +12,13 @@ import {
   Goals,
 } from "./components/index.js";
 import { getProfile } from "./redux/slices/profileSlice";
-import {
-  setAuthToken,
-  clearAuthToken,
-  getAuthToken,
-} from "./redux/slices/authSlice";
+import { clearAuthToken, getAuthToken } from "./redux/slices/authSlice";
 
 const App = () => {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.authSlice);
   const { user, goals } = useSelector((state) => state.profileSlice);
 
-  const [profile, setProfile] = useState();
   const [showGoals, setShowGoals] = useState(false);
   const [displayComponent, setDisplayComponent] = useState("welcome");
 
@@ -38,11 +32,11 @@ const App = () => {
         dispatch(clearAuthToken());
       }
     }
-  }, [token]);
+  }, [token, dispatch]);
 
   useEffect(() => {
     dispatch(getAuthToken());
-  }, []);
+  }, [dispatch]);
 
   const handleShowGoals = () => {
     setShowGoals(true);

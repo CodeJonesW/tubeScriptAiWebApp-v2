@@ -6,7 +6,7 @@ import Results from "./Results";
 const Analyze = () => {
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
-  const [buffer, setBuffer] = useState(""); // Buffer to store partial chunks
+  const [buffer, setBuffer] = useState("");
 
   const handleAnalyze = (goal, prompt, timeline) => {
     setLoading(true);
@@ -35,7 +35,7 @@ const Analyze = () => {
         }
 
         // Concatenate incoming markdown chunks and immediately update the result incrementally
-        setBuffer((prevBuffer) => {
+        setBuffer(() => {
           let updatedBuffer = prevBuffer + (newChunk === "" ? "\n" : newChunk);
 
           // Split lines to handle bullet points and headings
@@ -74,6 +74,7 @@ const Analyze = () => {
       // Handle stream closing or errors
       eventSource.onerror = (error) => {
         console.error("Error during analysis:", error);
+        console.log(buffer);
         eventSource.close();
         setBuffer((prevBuffer) => {
           console.log("Final buffer:", prevBuffer);
