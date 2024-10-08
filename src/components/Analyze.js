@@ -28,9 +28,9 @@ const Analyze = () => {
       // Listen for streaming results
       eventSource.onmessage = (event) => {
         let newChunk = event.data;
-        console.log("Received chunk in UI:", newChunk);
+        // console.log("Received chunk in UI:", newChunk);
         if (newChunk === "event: done") {
-          console.log("Analysis complete.");
+          // console.log("Analysis complete.");
           return;
         }
 
@@ -77,7 +77,7 @@ const Analyze = () => {
         console.log(buffer);
         eventSource.close();
         setBuffer((prevBuffer) => {
-          console.log("Final buffer:", prevBuffer);
+          // console.log("Final buffer:", prevBuffer);
           if (prevBuffer) {
             setResult((prevResult) => prevResult + prevBuffer);
           }
@@ -87,15 +87,15 @@ const Analyze = () => {
       };
 
       eventSource.onopen = () => {
-        console.log("SSE connection opened.");
+        // console.log("SSE connection opened.");
       };
       // Close the stream naturally when done
       eventSource.addEventListener("close", () => {
-        console.log("Stream closed");
+        // console.log("Stream closed");
         // If there's any data left in the buffer, add it to the result
         // If there's any remaining data in the buffer, add it to the result
         setBuffer((prevBuffer) => {
-          console.log("Final buffer:", prevBuffer);
+          // console.log("Final buffer:", prevBuffer);
           if (prevBuffer) {
             setResult((prevResult) => prevResult + prevBuffer);
           }

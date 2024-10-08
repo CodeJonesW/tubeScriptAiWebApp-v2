@@ -17,7 +17,6 @@ const Login = () => {
       setError("Please enter a valid email address.");
       return;
     }
-    console.log("email", email, "password", password);
     dispatch(login({ email, password }));
   };
 
