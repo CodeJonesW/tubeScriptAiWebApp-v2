@@ -10,13 +10,10 @@ import {
   ListItem,
   ListItemText,
 } from "@mui/material";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import "../css/LandingPage.css";
 import GoalIllustration from "../assets/images/my_goal_creator_landing_page_img_1.webp";
 
 const LandingPage = ({ displayComponent }) => {
-  const [showSample, setShowSample] = useState(false);
-
   return (
     <Box className="landing-page">
       {/* Hero Section */}
@@ -111,8 +108,31 @@ const LandingPage = ({ displayComponent }) => {
                   Define Your Goal
                 </Typography>
                 <Typography variant="body1" sx={{ color: "#555" }}>
-                  Use our AI-powered tools to clearly define and prioritize your
-                  goals.
+                  Use our AI-powered tools to clearly define the path to your
+                  goal.
+                </Typography>
+              </Paper>
+            </Grid>
+
+            <Grid item xs={12} md={4}>
+              <Paper
+                elevation={6}
+                sx={{
+                  padding: "20px",
+                  backgroundColor: "#ffffff",
+                  border: "1px solid #e0e0e0",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                }}
+              >
+                <Typography
+                  variant="h6"
+                  sx={{ fontWeight: "bold", color: "#007bff" }}
+                >
+                  Dive into Subtopics
+                </Typography>
+                <Typography variant="body1" sx={{ color: "#555" }}>
+                  Continue the conversation with AI without bloating your
+                  current conversation.
                 </Typography>
               </Paper>
             </Grid>
@@ -130,33 +150,11 @@ const LandingPage = ({ displayComponent }) => {
                   variant="h6"
                   sx={{ fontWeight: "bold", color: "#007bff" }}
                 >
-                  Track Progress
+                  Track Progress (Coming Soon)
                 </Typography>
                 <Typography variant="body1" sx={{ color: "#555" }}>
                   Stay on top of your progress with real-time tracking and
                   analytics.
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Paper
-                elevation={6}
-                sx={{
-                  padding: "20px",
-                  backgroundColor: "#ffffff",
-                  border: "1px solid #e0e0e0",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  sx={{ fontWeight: "bold", color: "#007bff" }}
-                >
-                  Achieve Your Goals
-                </Typography>
-                <Typography variant="body1" sx={{ color: "#555" }}>
-                  Get actionable steps from our AI to accomplish your goals
-                  efficiently.
                 </Typography>
               </Paper>
             </Grid>
