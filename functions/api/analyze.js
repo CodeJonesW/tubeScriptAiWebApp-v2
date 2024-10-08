@@ -3,9 +3,8 @@ export async function onRequest(context) {
   const goal = searchParams.get("goal");
   const prompt = searchParams.get("prompt");
   const timeline = searchParams.get("timeline");
-  const token = searchParams.get("token"); // Optional if you need authentication
+  const token = searchParams.get("token");
 
-  // Check for missing parameters
   if (!goal || !timeline) {
     console.log("Missing required parameters");
     return new Response(
@@ -64,7 +63,6 @@ export async function onRequest(context) {
       async start(controller) {
         while (true) {
           const { done, value } = await reader.read();
-          // console.log("Received chunk:", value);
           if (done) {
             console.log("Stream complete");
             setTimeout(() => {
@@ -87,9 +85,9 @@ export async function onRequest(context) {
     // Return the readable stream as a Server-Sent Event (SSE)
     return new Response(stream, {
       headers: {
-        "Content-Type": "text/event-stream", // Set the response type for SSE
-        "Cache-Control": "no-cache", // Ensure no caching for real-time streaming
-        Connection: "keep-alive", // Keep the connection open for streaming
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache",
+        Connection: "keep-alive",
       },
     });
   } catch (error) {

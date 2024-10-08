@@ -11,8 +11,7 @@ const Analyze = () => {
   const handleAnalyze = (goal, prompt, timeline) => {
     setLoading(true);
     setResult("");
-    setBuffer(""); // Clear the buffer for new analysis
-    console.log("buffers:", buffer);
+    setBuffer("");
 
     try {
       const token = localStorage.getItem("authToken");
@@ -67,7 +66,6 @@ const Analyze = () => {
           // Update the result with the complete content
           setResult((prevResult) => prevResult + completeContent);
 
-          console.log("remaining buffer:", remainingBuffer);
           // Return the remaining incomplete buffer for the next chunk
           return remainingBuffer || "";
         });
