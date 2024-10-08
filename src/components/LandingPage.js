@@ -50,7 +50,7 @@ const LandingPage = ({ displayComponent }) => {
                 variant="body1"
                 sx={{ marginBottom: "30px", fontSize: "18px" }}
               >
-                Set and track your goals with AI insights. Get started today!
+                Set and track your goals. Dive into the plan.
               </Typography>
               <Button
                 variant="contained"
@@ -166,7 +166,7 @@ const LandingPage = ({ displayComponent }) => {
         </Container>
       </Box>
 
-      {/* Testimonials Section */}
+      {/* Testimonials Section
       <Box
         sx={{ padding: "80px 0", backgroundColor: "#ececec" }}
         id="testimonials"
@@ -250,7 +250,7 @@ const LandingPage = ({ displayComponent }) => {
             </Grid>
           </Grid>
         </Container>
-      </Box>
+      </Box> */}
 
       {/* Pricing Section */}
       <Box sx={{ padding: "80px 0", backgroundColor: "#f5f5f5" }} id="pricing">
