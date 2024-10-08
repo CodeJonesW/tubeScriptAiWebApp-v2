@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Button, Box } from "@mui/material";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import Profile from "./components/Profile";
-import Goals from "./components/Goals";
-import Login from "./components/Login";
-import HowToUseCard from "./components/HowToUse";
-import Register from "./components/Register";
-import Analyze from "./components/Analyze";
 import axios from "axios";
-import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
+import { Button, Box } from "@mui/material";
+import "./App.css";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import {
+  Profile,
+  HowToUse,
+  Register,
+  Login,
+  Analyze,
+  Goals,
+} from "./components/index.js";
 import { getProfile } from "./redux/slices/profileSlice";
 import {
   setAuthToken,
@@ -82,7 +84,7 @@ const App = () => {
           {displayComponent === "welcome" ? (
             <Box>
               <h2>My Goal Creator</h2>
-              <HowToUseCard displayComponent={setDisplayComponent} />
+              <HowToUse displayComponent={setDisplayComponent} />
             </Box>
           ) : null}
           {displayComponent === "register" ? (

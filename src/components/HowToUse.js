@@ -5,7 +5,7 @@ import Results from "./Results";
 import { sample } from "../utils/sample";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
-const HowToUseCard = ({ displayComponent }) => {
+const HowToUse = ({ displayComponent }) => {
   const [showSample, setShowSample] = useState(false);
   return (
     <>
@@ -74,4 +74,4 @@ const HowToUseCard = ({ displayComponent }) => {
   );
 };
 
-export default HowToUseCard;
+export default HowToUse;
