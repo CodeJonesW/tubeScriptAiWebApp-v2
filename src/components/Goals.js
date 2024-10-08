@@ -3,13 +3,15 @@ import axios from "axios";
 import { Box, Card, Button, List, ListItem } from "@mui/material";
 import Results from "./Results";
 import "../css/Goals.css";
+import { useSelector } from "react-redux";
 
 const GoalsList = ({ goals }) => {
+  console.log("Goals", goals);
   const [result, setResults] = useState(null);
+  const { token } = useSelector((state) => state.authSlice);
   const handleShowGoal = async (goalId) => {
     console.log("Goal ID", goalId);
     try {
-      const token = localStorage.getItem("authToken");
       const response = await axios.post(
         `/api/goal`,
         {

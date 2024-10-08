@@ -9,44 +9,39 @@ import Register from "./components/Register";
 import Analyze from "./components/Analyze";
 import axios from "axios";
 import "./App.css";
+import { useDispatch, useSelector } from "react-redux";
+import { getProfile } from "./redux/slices/profileSlice";
+import {
+  setAuthToken,
+  clearAuthToken,
+  getAuthToken,
+} from "./redux/slices/authSlice";
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    !!localStorage.getItem("authToken")
-  );
-  const [profile, setProfile] = useState(null);
-  const [goals, setGoals] = useState([]);
+  const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.authSlice);
+  const { user, goals } = useSelector((state) => state.profileSlice);
+
+  const [profile, setProfile] = useState();
   const [showGoals, setShowGoals] = useState(false);
   const [displayComponent, setDisplayComponent] = useState("welcome");
 
   useEffect(() => {
-    const fetchProfile = async () => {
+    if (token) {
       try {
-        const token = localStorage.getItem("authToken");
-        const response = await axios.get(`api/profile`, {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setProfile(response.data.user);
-        setGoals(response.data.goals);
+        dispatch(getProfile(token));
         setDisplayComponent("analyze");
       } catch (error) {
-        setIsAuthenticated(false);
-        localStorage.removeItem("authToken");
-        console.error(error);
+        console.error("Error fetching profile:", error);
+        dispatch(clearAuthToken());
       }
-    };
-
-    if (isAuthenticated) {
-      fetchProfile();
     }
-  }, [isAuthenticated]);
+  }, [token]);
 
-  const handleLogin = (token) => {
-    setIsAuthenticated(true);
-  };
+  useEffect(() => {
+    dispatch(getAuthToken());
+  }, []);
+
   const handleShowGoals = () => {
     setShowGoals(true);
   };
@@ -56,8 +51,7 @@ const App = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("authToken");
-    setIsAuthenticated(false);
+    dispatch(clearAuthToken());
     setDisplayComponent("welcome");
   };
 
@@ -83,7 +77,7 @@ const App = () => {
 
   return (
     <>
-      {!isAuthenticated ? (
+      {!token ? (
         <Box className="onboarding-container">
           {displayComponent === "welcome" ? (
             <Box>
@@ -108,10 +102,7 @@ const App = () => {
             <>
               <BackButton />
               <h2>My Goal Creator</h2>
-              <Login
-                back={() => setDisplayComponent("welcome")}
-                onLogin={handleLogin}
-              />
+              <Login back={() => setDisplayComponent("welcome")} />
             </>
           ) : null}
         </Box>
@@ -132,7 +123,7 @@ const App = () => {
             </Box>
             <Box className="profile-container">
               <Profile
-                profile={profile}
+                user={user}
                 showGoals={handleShowGoals}
                 showGoalCreator={handleShowGoalCreator}
                 isShowingGoals={showGoals}

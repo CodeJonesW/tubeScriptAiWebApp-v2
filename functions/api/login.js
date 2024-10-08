@@ -7,6 +7,7 @@ export async function onRequest(context) {
 
   const requestBody = await context.request.json();
   const { email, password } = requestBody;
+  console.log("email", email, "password", password);
 
   if (!email || !password) {
     return new Response(

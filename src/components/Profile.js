@@ -1,8 +1,8 @@
 import React from "react";
 import { Button, Box } from "@mui/material";
 
-const Profile = ({ profile, isShowingGoals, showGoals, showGoalCreator }) => {
-  if (!profile) {
+const Profile = ({ user, isShowingGoals, showGoals, showGoalCreator }) => {
+  if (!user) {
     return <div className="loading-message">Loading...</div>;
   }
 
@@ -10,11 +10,11 @@ const Profile = ({ profile, isShowingGoals, showGoals, showGoalCreator }) => {
     <Box className="profile-card">
       <h3>Profile</h3>
       <Box className="profile-info-row">
-        <strong>Username:</strong> <span>{profile.email}</span>
+        <strong>Username:</strong> <span>{user.email}</span>
       </Box>
       <Box className="profile-info-row">
         <strong>Remaining Goal Requests:</strong>{" "}
-        <span>{profile.analyze_requests}</span>
+        <span>{user.analyze_requests}</span>
       </Box>
       {!isShowingGoals ? (
         <Box className="profile-info-row">
