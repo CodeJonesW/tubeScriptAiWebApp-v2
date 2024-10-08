@@ -1,16 +1,9 @@
 export async function onRequest(context) {
-  console.log("Cloudflare Pages function");
-
   const { searchParams } = new URL(context.request.url);
-  console.log("Search params:", searchParams.toString());
   const goal = searchParams.get("goal");
   const prompt = searchParams.get("prompt");
   const timeline = searchParams.get("timeline");
   const token = searchParams.get("token"); // Optional if you need authentication
-  console.log("Goal:", goal);
-  console.log("Prompt:", prompt);
-  console.log("Timeline:", timeline);
-  console.log("Token:", token);
 
   // Check for missing parameters
   if (!goal || !timeline) {
@@ -24,25 +17,19 @@ export async function onRequest(context) {
     );
   }
 
-  console.log("Goal:", goal);
-
-  // Verify token (if applicable)
   if (!token) {
     return new Response(JSON.stringify({ error: "Unauthorized" }), {
       status: 401,
       headers: { "Content-Type": "application/json" },
     });
   }
-  console.log("Token:", token);
 
   const isLocal = context.request.url.includes("localhost");
   const workerUrl = isLocal
     ? "http://localhost:8787"
-    : "https://tube-script-ai-worker.williamjonescodes.workers.dev/";
+    : "https://tube-script-ai-worker.williamjonescodes.workers.dev";
 
   const url = `${workerUrl}/api/analyze`;
-  // const body = await context.request.json();
-  // const { goal, prompt, timeline } = body;
 
   const init = {
     method: "POST",
