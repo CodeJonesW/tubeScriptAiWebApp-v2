@@ -1,6 +1,5 @@
-import { createSlice, configureStore } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { clear } from "@testing-library/user-event/dist/clear";
 import axios from "axios";
 
 export const getGoal = createAsyncThunk(

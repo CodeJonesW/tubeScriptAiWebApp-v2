@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { validateEmail } from "../utils/account_verify";
 import { Box, Button, TextField, FormGroup } from "@mui/material";
 import { login } from "../redux/slices/authSlice";
