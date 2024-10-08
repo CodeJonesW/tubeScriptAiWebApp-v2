@@ -38,7 +38,7 @@ export async function onRequest(context) {
   const isLocal = context.request.url.includes("localhost");
   const workerUrl = isLocal
     ? "http://localhost:8787"
-    : "https://your-worker-url.workers.dev"; // Replace with your worker URL
+    : "https://tube-script-ai-worker.williamjonescodes.workers.dev/";
 
   const url = `${workerUrl}/api/analyze`;
   // const body = await context.request.json();
