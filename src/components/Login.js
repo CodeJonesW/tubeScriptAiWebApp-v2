@@ -58,6 +58,12 @@ const Login = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
               color="secondary"
+              sx={{
+                "& input:-webkit-autofill": {
+                  WebkitBoxShadow: `0 0 0 1000px ${theme.palette.background.paper} inset`,
+                  WebkitTextFillColor: theme.palette.text.primary,
+                },
+              }}
             />
           </Box>
           <Box className="input-group">
@@ -69,6 +75,12 @@ const Login = () => {
               variant="outlined"
               required
               color="secondary"
+              sx={{
+                "& input:-webkit-autofill": {
+                  WebkitBoxShadow: `0 0 0 1000px ${theme.palette.background.paper} inset`,
+                  WebkitTextFillColor: theme.palette.text.primary,
+                },
+              }}
             />
           </Box>
           <Button
