@@ -102,6 +102,9 @@ const InputForm = ({ onSubmit, loading }) => {
                 <MenuItem value="3 months">3 Months</MenuItem>
                 <MenuItem value="6 months">6 Months</MenuItem>
                 <MenuItem value="1 year">1 Year</MenuItem>
+                <MenuItem value="2 years">2 Years</MenuItem>
+                <MenuItem value="5 years">5 Years</MenuItem>
+                <MenuItem value="10 years">10 Years</MenuItem>
               </Select>
             </FormControl>
           </Box>
