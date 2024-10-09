@@ -121,11 +121,33 @@ const Analyze = () => {
   };
 
   return (
-    <div className="main-container">
-      <div className="form-container">
+    <div
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "20px",
+        width: "100%",
+        marginBottom: "200px",
+      }}
+    >
+      <div
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "20px",
+          maxWidth: "300px",
+          padding: "40px",
+          borderRadius: "8px",
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+        }}
+      >
         <InputForm loading={loading} onSubmit={handleAnalyze} />
       </div>
-      <div className="results-container">
+      <div sx={{ margiTop: "20px" }}>
         {result && <Results result={result} />}
       </div>
     </div>

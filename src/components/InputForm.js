@@ -10,8 +10,9 @@ import {
   TextField,
   FormGroup,
 } from "@mui/material";
-
+import { useTheme } from "@mui/material/styles";
 const InputForm = ({ onSubmit, loading }) => {
+  const theme = useTheme();
   const [goal, setGoal] = useState("");
   const [prompt, setPrompt] = useState("");
   const [timeline, setTimeline] = useState("1 year");
@@ -22,7 +23,14 @@ const InputForm = ({ onSubmit, loading }) => {
   };
 
   return (
-    <Box className="input-form">
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        padding: "20px",
+      }}
+    >
       <form onSubmit={handleSubmit}>
         <FormGroup>
           <Box className="input-group">

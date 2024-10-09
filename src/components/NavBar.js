@@ -22,7 +22,7 @@ const NavBar = ({ handleLogout }) => {
   };
 
   return (
-    <AppBar color="primary" position="static">
+    <AppBar color="secondary" position="static">
       <Toolbar>
         <Typography variant="h6" sx={{ flexGrow: 1 }}>
           My Goal Creator

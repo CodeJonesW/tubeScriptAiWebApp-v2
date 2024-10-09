@@ -111,11 +111,12 @@ const LandingPage = ({ displayComponent }) => {
               <Paper
                 elevation={6}
                 sx={{
-                  padding: "20px",
+                  padding: "44px",
                   backgroundColor: theme.palette.background.paper,
                   border: `1px solid ${theme.palette.divider}`,
                   boxShadow: theme.shadows[4],
                   borderRadius: "10px",
+                  minHeight: "144px",
                 }}
               >
                 <Typography
@@ -129,9 +130,9 @@ const LandingPage = ({ displayComponent }) => {
                 </Typography>
                 <Typography
                   variant="body1"
-                  sx={{ color: theme.palette.text.secondary }}
+                  sx={{ color: theme.palette.text.secondary, marginTop: "4px" }}
                 >
-                  Use our AI-powered tools to clearly define the path to your
+                  Use our AI-powered tool to clearly define the path to your
                   goal.
                 </Typography>
               </Paper>
@@ -141,11 +142,12 @@ const LandingPage = ({ displayComponent }) => {
               <Paper
                 elevation={6}
                 sx={{
-                  padding: "20px",
+                  padding: "44px",
                   backgroundColor: theme.palette.background.paper,
                   border: `1px solid ${theme.palette.divider}`,
                   boxShadow: theme.shadows[4],
                   borderRadius: "10px",
+                  minHeight: "144px",
                 }}
               >
                 <Typography
@@ -156,10 +158,10 @@ const LandingPage = ({ displayComponent }) => {
                 </Typography>
                 <Typography
                   variant="body1"
-                  sx={{ color: theme.palette.text.secondary }}
+                  sx={{ color: theme.palette.text.secondary, marginTop: "4px" }}
                 >
-                  Continue the conversation with AI without bloating your
-                  current conversation.
+                  Continue the conversation in seperate windows to keep main
+                  line of questioning concise.
                 </Typography>
               </Paper>
             </Grid>
@@ -168,11 +170,12 @@ const LandingPage = ({ displayComponent }) => {
               <Paper
                 elevation={6}
                 sx={{
-                  padding: "20px",
+                  padding: "44px",
                   backgroundColor: theme.palette.background.paper,
                   border: `1px solid ${theme.palette.divider}`,
                   boxShadow: theme.shadows[4],
                   borderRadius: "10px",
+                  minHeight: "144px",
                 }}
               >
                 <Typography
@@ -183,7 +186,7 @@ const LandingPage = ({ displayComponent }) => {
                 </Typography>
                 <Typography
                   variant="body1"
-                  sx={{ color: theme.palette.text.secondary }}
+                  sx={{ color: theme.palette.text.secondary, marginTop: "4px" }}
                 >
                   Stay on top of your progress with real-time tracking and
                   analytics.
@@ -284,7 +287,7 @@ const LandingPage = ({ displayComponent }) => {
       <Box
         sx={{
           padding: "80px 0",
-          backgroundColor: theme.palette.background.default,
+          background: `linear-gradient(135deg, ${theme.palette.secondary.main}, ${theme.palette.primary.main})`,
         }}
         id="pricing"
       >

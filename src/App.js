@@ -14,8 +14,10 @@ import {
 } from "./components/index.js";
 import { getProfile } from "./redux/slices/profileSlice";
 import { clearAuthToken, getAuthToken } from "./redux/slices/authSlice";
+import { useTheme } from "@mui/material/styles";
 
 const App = () => {
+  const theme = useTheme();
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.authSlice);
   const { user, goals } = useSelector((state) => state.profileSlice);
@@ -55,7 +57,8 @@ const App = () => {
     return (
       <Box style={{ width: "100%", marginBottom: "44px" }}>
         <Button
-          variant="outlined"
+          variant="contained"
+          color="secondary"
           onClick={() => setDisplayComponent("welcome")}
           style={{
             width: "24px",
@@ -80,30 +83,81 @@ const App = () => {
               <LandingPage displayComponent={setDisplayComponent} />
             </Box>
           ) : null}
+
           {displayComponent === "register" ? (
-            <Box className="onboarding-container">
+            <Box
+              sx={{
+                background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                height: "100vh",
+                width: "100vw",
+                padding: "20px",
+              }}
+            >
               <BackButton />
-              <Register
-                back={() => setDisplayComponent("welcome")}
-                onRegister={() => {
-                  alert("Registered successfully! Please log in.");
-                  setDisplayComponent("login");
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
-              />
+              >
+                <Register
+                  back={() => setDisplayComponent("welcome")}
+                  onRegister={() => {
+                    alert("Registered successfully! Please log in.");
+                    setDisplayComponent("login");
+                  }}
+                />
+              </Box>
             </Box>
           ) : null}
+
           {displayComponent === "login" ? (
-            <Box className="onboarding-container">
+            <Box
+              sx={{
+                background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                height: "100vh",
+                width: "100vw",
+                padding: "20px",
+              }}
+            >
               <BackButton />
-              <Login back={() => setDisplayComponent("welcome")} />
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Login back={() => setDisplayComponent("welcome")} />
+              </Box>
             </Box>
           ) : null}
         </Box>
       ) : (
-        <Box className="app-container">
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            overflow: "scroll",
+            background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+          }}
+        >
           <Box style={{ width: "100%" }}>
             <NavBar handleLogout={handleLogout} />
-            <Box className="profile-container">
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "20px",
+              }}
+            >
               <Profile
                 user={user}
                 showGoals={handleShowGoals}
