@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { validateEmail } from "../utils/account_verify";
-import { Box, FormGroup, Button, TextField } from "@mui/material";
+import { Box, FormGroup, Button, TextField, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 const Register = ({ onRegister }) => {
   const [email, setEmail] = useState("");
+  const theme = useTheme();
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
@@ -29,9 +31,30 @@ const Register = ({ onRegister }) => {
   };
 
   return (
-    <Box className="form-container">
-      <h2 className="form-title">Register</h2>
-      {error && <p className="error-message">{error}</p>}
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        maxWidth: "300px",
+        padding: "40px",
+        borderRadius: "8px",
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+        backgroundColor: theme.palette.background.paper,
+      }}
+    >
+      <Typography
+        variant="h4"
+        sx={{ marginBottom: "20px", color: theme.palette.text.primary }}
+      >
+        Register
+      </Typography>
+      {error && (
+        <Typography variant="body2" color="error" sx={{ marginBottom: "20px" }}>
+          {error}
+        </Typography>
+      )}
       <form onSubmit={handleRegister}>
         <FormGroup>
           <Box className="input-group">
@@ -40,7 +63,6 @@ const Register = ({ onRegister }) => {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="form-input"
               required
             />
           </Box>
@@ -50,11 +72,10 @@ const Register = ({ onRegister }) => {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="form-input"
               required
             />
           </Box>
-          <Button type="submit" variant="contained" className="primary-button">
+          <Button type="submit" variant="contained" color="primary">
             Register
           </Button>
         </FormGroup>

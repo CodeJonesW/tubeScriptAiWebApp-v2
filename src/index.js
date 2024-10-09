@@ -15,38 +15,56 @@ const preloadedState = {};
 
 const store = configureAppStore(preloadedState);
 
-// Define a custom theme with updated primary and secondary colors
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#6a11cb", // Purple as the primary color
-      contrastText: "#fff", // White text for contrast
+      main: "#0d1f2d", // Rich Black as the primary color
+      contrastText: "#fae1df", // Misty Rose for contrast on primary elements
     },
     secondary: {
-      main: "#1e90ff", // Updated blue for secondary color
-      contrastText: "#fff", // White text for better readability
+      main: "#546a7b", // Payne's Gray as secondary color
+      contrastText: "#e4c3ad", // Desert Sand for contrast
     },
     background: {
-      default: "#f5f5f5", // Light grey background for sections
-      paper: "#ffffff", // White for card backgrounds
+      default: "#0d1f2d", // Rich Black for the default background
+      paper: "#222b32", // Payne's Gray for card and paper backgrounds
     },
     text: {
-      primary: "#333", // Dark grey for text
-      secondary: "#555", // Lighter grey for secondary text
+      primary: "#fae1df", // Misty Rose for primary text (light color on dark background)
+      secondary: "#e4c3ad", // Desert Sand for secondary text
+    },
+    action: {
+      hover: "#9ea3b0", // Cadet Gray for hover state
     },
   },
   typography: {
     fontFamily: "Roboto, sans-serif",
+    h1: {
+      fontWeight: 700,
+      color: "#fae1df",
+    },
+    h2: {
+      fontWeight: "bold",
+      color: "#fae1df",
+    },
+    h3: {
+      fontWeight: "bold",
+      color: "#fae1df",
+    },
     h4: {
       fontWeight: "bold",
-      color: "#333", // Dark grey for headers
+      color: "#fae1df",
     },
-    h6: {
+    h5: {
       fontWeight: "bold",
-      color: "#1e90ff", // Use new secondary blue for card headers
+      color: "#fae1df",
     },
     body1: {
-      color: "#555", // Lighter grey for body text
+      color: "#e4c3ad",
+    },
+    button: {
+      textTransform: "none",
+      color: "#fae1df",
     },
   },
 });

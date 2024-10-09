@@ -10,15 +10,17 @@ import {
   Login,
   Analyze,
   Goals,
+  NavBar,
 } from "./components/index.js";
 import { getProfile } from "./redux/slices/profileSlice";
 import { clearAuthToken, getAuthToken } from "./redux/slices/authSlice";
+import { useTheme } from "@mui/material/styles";
 
 const App = () => {
+  const theme = useTheme();
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.authSlice);
   const { user, goals } = useSelector((state) => state.profileSlice);
-
   const [showGoals, setShowGoals] = useState(false);
   const [displayComponent, setDisplayComponent] = useState("welcome");
 
@@ -55,7 +57,8 @@ const App = () => {
     return (
       <Box style={{ width: "100%", marginBottom: "44px" }}>
         <Button
-          variant="outlined"
+          variant="contained"
+          color="secondary"
           onClick={() => setDisplayComponent("welcome")}
           style={{
             width: "24px",
@@ -72,7 +75,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <Box sx={{ width: "100%", height: "100%" }}>
       {!token ? (
         <Box>
           {displayComponent === "welcome" ? (
@@ -80,41 +83,84 @@ const App = () => {
               <LandingPage displayComponent={setDisplayComponent} />
             </Box>
           ) : null}
+
           {displayComponent === "register" ? (
-            <Box className="onboarding-container">
+            <Box
+              sx={{
+                background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                height: "100vh",
+                width: "100vw",
+                padding: "20px",
+              }}
+            >
               <BackButton />
-              <Register
-                back={() => setDisplayComponent("welcome")}
-                onRegister={() => {
-                  alert("Registered successfully! Please log in.");
-                  setDisplayComponent("login");
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
-              />
+              >
+                <Register
+                  back={() => setDisplayComponent("welcome")}
+                  onRegister={() => {
+                    alert("Registered successfully! Please log in.");
+                    setDisplayComponent("login");
+                  }}
+                />
+              </Box>
             </Box>
           ) : null}
+
           {displayComponent === "login" ? (
-            <Box className="onboarding-container">
+            <Box
+              sx={{
+                background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                height: "100vh",
+                width: "100vw",
+                padding: "20px",
+              }}
+            >
               <BackButton />
-              <Login back={() => setDisplayComponent("welcome")} />
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Login back={() => setDisplayComponent("welcome")} />
+              </Box>
             </Box>
           ) : null}
         </Box>
       ) : (
-        <Box className="app-container">
+        <Box
+          className="main"
+          sx={{
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "flex-start",
+            overflow: "scroll",
+            background: theme.palette.primary.main,
+          }}
+        >
           <Box style={{ width: "100%" }}>
-            <Box className="nav-container">
-              <h2>My Goal Creator</h2>
-              <Box className="logout-container">
-                <Button
-                  variant="outlined"
-                  className="logout-button"
-                  onClick={handleLogout}
-                >
-                  Logout
-                </Button>
-              </Box>
-            </Box>
-            <Box className="profile-container">
+            <NavBar handleLogout={handleLogout} />
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "20px",
+              }}
+            >
               <Profile
                 user={user}
                 showGoals={handleShowGoals}
@@ -126,7 +172,7 @@ const App = () => {
           {!showGoals ? <Analyze /> : <Goals goals={goals} />}
         </Box>
       )}
-    </>
+    </Box>
   );
 };
 

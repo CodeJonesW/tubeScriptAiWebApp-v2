@@ -1,12 +1,24 @@
-import React, { useState } from "react";
-import "../css/LandingPage.css";
+import React, { useState, useEffect } from "react";
 import InputForm from "./InputForm";
 import Results from "./Results";
+import { getProfile } from "../redux/slices/profileSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { Box } from "@mui/material";
 
 const Analyze = () => {
+  const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.authSlice);
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
   const [buffer, setBuffer] = useState("");
+  const [refreshProfile, setRefreshProfile] = useState(false);
+
+  useEffect(() => {
+    if (refreshProfile) {
+      dispatch(getProfile(token));
+      setRefreshProfile(false);
+    }
+  }, [refreshProfile, token, dispatch]);
 
   const handleAnalyze = (goal, prompt, timeline) => {
     setLoading(true);
@@ -84,6 +96,7 @@ const Analyze = () => {
           return ""; // Clear buffer
         });
         setLoading(false); // Stop loading when stream is done or errored
+        setRefreshProfile(true);
       };
 
       eventSource.onopen = () => {
@@ -109,14 +122,21 @@ const Analyze = () => {
   };
 
   return (
-    <div className="main-container">
-      <div className="form-container">
+    <Box
+      sx={{
+        display: "flex",
+        width: "100%",
+        height: "100%",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
+    >
+      <Box>
         <InputForm loading={loading} onSubmit={handleAnalyze} />
-      </div>
-      <div className="results-container">
-        {result && <Results result={result} />}
-      </div>
-    </div>
+      </Box>
+      {result ? <Results result={result} /> : null}
+    </Box>
   );
 };
 

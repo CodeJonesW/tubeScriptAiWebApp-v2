@@ -1,27 +1,38 @@
 import React from "react";
-import { Button, Box } from "@mui/material";
-
+import { Button, Box, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 const Profile = ({ user, isShowingGoals, showGoals, showGoalCreator }) => {
+  const theme = useTheme();
   if (!user) {
     return <div className="loading-message">Loading...</div>;
   }
 
   return (
-    <Box className="profile-card">
-      <h3>Profile</h3>
-      <Box className="profile-info-row">
-        <strong>Username:</strong> <span>{user.email}</span>
-      </Box>
-      <Box className="profile-info-row">
-        <strong>Remaining Goal Requests:</strong>{" "}
-        <span>{user.analyze_requests}</span>
+    <Box
+      sx={{
+        backgroundColor: theme.palette.background.paper,
+        padding: "20px",
+        borderRadius: "8px",
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+        marginBottom: "20px",
+        width: "300px",
+        textAlign: "center",
+      }}
+    >
+      <Typography
+        variant="h6"
+        sx={{ fontWeight: "bold", color: theme.palette.text.primary }}
+      >
+        Profile
+      </Typography>
+      <Box>
+        <Typography>{user.email}</Typography>
       </Box>
       {!isShowingGoals ? (
-        <Box className="profile-info-row">
+        <Box>
           <span>
             <Button
               style={{ marginTop: "16px", maxWidth: "144px" }}
-              className="primary-button"
               onClick={showGoals}
               variant="contained"
             >
@@ -30,11 +41,10 @@ const Profile = ({ user, isShowingGoals, showGoals, showGoalCreator }) => {
           </span>
         </Box>
       ) : (
-        <Box className="profile-info-row">
+        <Box>
           <span>
             <Button
               style={{ marginTop: "16px", maxWidth: "144px" }}
-              className="primary-button"
               onClick={showGoalCreator}
               variant="contained"
             >

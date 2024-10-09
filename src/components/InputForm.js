@@ -10,8 +10,10 @@ import {
   TextField,
   FormGroup,
 } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 const InputForm = ({ onSubmit, loading }) => {
+  const theme = useTheme();
   const [goal, setGoal] = useState("");
   const [prompt, setPrompt] = useState("");
   const [timeline, setTimeline] = useState("1 year");
@@ -22,7 +24,18 @@ const InputForm = ({ onSubmit, loading }) => {
   };
 
   return (
-    <Box className="input-form">
+    <Box
+      id="inputform"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        padding: "20px",
+        backgroundColor: theme.palette.background.paper,
+        borderRadius: "10px",
+        width: "300px",
+      }}
+    >
       <form onSubmit={handleSubmit}>
         <FormGroup>
           <Box className="input-group">
@@ -31,8 +44,18 @@ const InputForm = ({ onSubmit, loading }) => {
                 placeholder="Type your goal..."
                 value={goal}
                 onChange={(e) => setGoal(e.target.value)}
-                className="form-input"
                 required
+                InputProps={{
+                  style: {
+                    backgroundColor: theme.palette.background.paper,
+                  },
+                }}
+                sx={{
+                  "& input:-webkit-autofill": {
+                    WebkitBoxShadow: `0 0 0 1000px ${theme.palette.background.paper} inset`,
+                    WebkitTextFillColor: theme.palette.text.primary,
+                  },
+                }}
               />
             </FormControl>
           </Box>
@@ -42,10 +65,21 @@ const InputForm = ({ onSubmit, loading }) => {
                 placeholder="Areas of focus..."
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
-                className="form-textarea"
                 variant="outlined"
                 multiline
                 rows={3}
+                InputProps={{
+                  style: {
+                    backgroundColor: theme.palette.background.paper,
+                    color: theme.palette.text.primary,
+                  },
+                }}
+                sx={{
+                  "& input:-webkit-autofill": {
+                    WebkitBoxShadow: `0 0 0 1000px ${theme.palette.background.paper} inset`,
+                    WebkitTextFillColor: theme.palette.text.primary,
+                  },
+                }}
               />
             </FormControl>
           </Box>
@@ -54,7 +88,6 @@ const InputForm = ({ onSubmit, loading }) => {
               <InputLabel id="timeline-select-label">Timeline</InputLabel>
               <Select
                 labelId="timeline-select-label"
-                className="form-select"
                 label="Timeline"
                 value={timeline}
                 onChange={(e) => setTimeline(e.target.value)}
@@ -73,12 +106,7 @@ const InputForm = ({ onSubmit, loading }) => {
             </FormControl>
           </Box>
           <Box style={{ display: "flex", justifyContent: "center" }}>
-            <Button
-              type="submit"
-              variant={"contained"}
-              className="primary-button"
-              disabled={loading}
-            >
+            <Button type="submit" variant={"contained"} disabled={loading}>
               {loading ? <CircularProgress size={24} /> : "Show me the way"}
             </Button>
           </Box>
