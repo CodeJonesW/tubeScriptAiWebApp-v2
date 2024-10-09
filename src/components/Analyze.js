@@ -18,7 +18,7 @@ const Analyze = () => {
       dispatch(getProfile(token));
       setRefreshProfile(false);
     }
-  }, [refreshProfile, dispatch]);
+  }, [refreshProfile, token, dispatch]);
 
   const handleAnalyze = (goal, prompt, timeline) => {
     setLoading(true);
