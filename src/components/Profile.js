@@ -1,13 +1,17 @@
 import React from "react";
 import { Button, Box } from "@mui/material";
-
+import { useTheme } from "@mui/material/styles";
 const Profile = ({ user, isShowingGoals, showGoals, showGoalCreator }) => {
+  const theme = useTheme();
   if (!user) {
     return <div className="loading-message">Loading...</div>;
   }
 
   return (
-    <Box className="profile-card">
+    <Box
+      className="profile-card"
+      sx={{ backgroundColor: theme.palette.secondary.main }}
+    >
       <h3>Profile</h3>
       <Box className="profile-info-row">
         <strong>Username:</strong> <span>{user.email}</span>

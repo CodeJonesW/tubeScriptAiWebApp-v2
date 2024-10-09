@@ -11,6 +11,7 @@ import {
   FormGroup,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+
 const InputForm = ({ onSubmit, loading }) => {
   const theme = useTheme();
   const [goal, setGoal] = useState("");
@@ -24,11 +25,15 @@ const InputForm = ({ onSubmit, loading }) => {
 
   return (
     <Box
+      id="inputform"
       sx={{
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         padding: "20px",
+        backgroundColor: theme.palette.secondary.main,
+        borderRadius: "10px",
+        width: "300px",
       }}
     >
       <form onSubmit={handleSubmit}>

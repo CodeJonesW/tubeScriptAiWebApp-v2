@@ -3,6 +3,7 @@ import InputForm from "./InputForm";
 import Results from "./Results";
 import { getProfile } from "../redux/slices/profileSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { Box } from "@mui/material";
 
 const Analyze = () => {
   const dispatch = useDispatch();
@@ -121,36 +122,21 @@ const Analyze = () => {
   };
 
   return (
-    <div
+    <Box
       sx={{
         display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "20px",
         width: "100%",
-        marginBottom: "200px",
+        height: "100%",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        flexDirection: "column",
       }}
     >
-      <div
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "20px",
-          maxWidth: "300px",
-          padding: "40px",
-          borderRadius: "8px",
-          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-        }}
-      >
+      <Box>
         <InputForm loading={loading} onSubmit={handleAnalyze} />
-      </div>
-      <div sx={{ margiTop: "20px" }}>
-        {result && <Results result={result} />}
-      </div>
-    </div>
+      </Box>
+      {result ? <Results result={result} /> : null}
+    </Box>
   );
 };
 

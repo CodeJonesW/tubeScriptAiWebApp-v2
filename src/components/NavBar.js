@@ -9,8 +9,10 @@ import {
   Box,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useTheme } from "@mui/material/styles";
 
 const NavBar = ({ handleLogout }) => {
+  const theme = useTheme();
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleMenuOpen = (event) => {
@@ -24,7 +26,10 @@ const NavBar = ({ handleLogout }) => {
   return (
     <AppBar color="secondary" position="static">
       <Toolbar>
-        <Typography variant="h6" sx={{ flexGrow: 1 }}>
+        <Typography
+          variant="h6"
+          sx={{ flexGrow: 1, color: theme.palette.text.primary }}
+        >
           My Goal Creator
         </Typography>
 
