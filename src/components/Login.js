@@ -51,7 +51,7 @@ const Login = () => {
       )}
       <form onSubmit={handleLogin}>
         <FormGroup>
-          <Box>
+          <Box className="input-group">
             <TextField
               type="email"
               variant="outlined"
@@ -62,7 +62,7 @@ const Login = () => {
               color="secondary"
             />
           </Box>
-          <Box>
+          <Box className="input-group">
             <TextField
               type="password"
               placeholder="Password"
