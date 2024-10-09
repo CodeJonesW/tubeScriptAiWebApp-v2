@@ -3,8 +3,10 @@ import { Box, Card, Button, List, ListItem } from "@mui/material";
 import Results from "./Results";
 import { useSelector, useDispatch } from "react-redux";
 import { getGoal, clearGoal } from "../redux/slices/goalSlice";
+import { useTheme } from "@mui/material/styles";
 
 const GoalsList = ({ goals }) => {
+  const theme = useTheme();
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.authSlice);
   const { goal } = useSelector((state) => state.goalSlice);
@@ -21,7 +23,11 @@ const GoalsList = ({ goals }) => {
       {goal ? (
         <Box>
           <Box style={{ display: "flex", justifyContent: "center" }}>
-            <Button onClick={handleClearGoal} variant="outlined">
+            <Button
+              onClick={handleClearGoal}
+              variant="contained"
+              color="secondary"
+            >
               View All Goals
             </Button>
           </Box>
