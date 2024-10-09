@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "../css/LandingPage.css";
 import InputForm from "./InputForm";
 import Results from "./Results";
 import { getProfile } from "../redux/slices/profileSlice";

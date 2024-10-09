@@ -10,6 +10,7 @@ import {
   Login,
   Analyze,
   Goals,
+  NavBar,
 } from "./components/index.js";
 import { getProfile } from "./redux/slices/profileSlice";
 import { clearAuthToken, getAuthToken } from "./redux/slices/authSlice";
@@ -18,7 +19,6 @@ const App = () => {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.authSlice);
   const { user, goals } = useSelector((state) => state.profileSlice);
-
   const [showGoals, setShowGoals] = useState(false);
   const [displayComponent, setDisplayComponent] = useState("welcome");
 
@@ -102,18 +102,7 @@ const App = () => {
       ) : (
         <Box className="app-container">
           <Box style={{ width: "100%" }}>
-            <Box className="nav-container">
-              <h2>My Goal Creator</h2>
-              <Box className="logout-container">
-                <Button
-                  variant="outlined"
-                  className="logout-button"
-                  onClick={handleLogout}
-                >
-                  Logout
-                </Button>
-              </Box>
-            </Box>
+            <NavBar handleLogout={handleLogout} />
             <Box className="profile-container">
               <Profile
                 user={user}

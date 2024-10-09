@@ -40,7 +40,6 @@ h2 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 16px;
   overflow: scroll;
 }
 
@@ -249,3 +248,49 @@ h2 {
   justify-content: center;
   padding: 20px;
 }
+
+/* CSS HEX */
+/* --rich-black: #0d1f2dff;
+--paynes-gray: #546a7bff;
+--cadet-gray: #9ea3b0ff;
+--misty-rose: #fae1dfff;
+--desert-sand: #e4c3adff; */
+
+/* CSS HSL */
+/* --rich-black: hsla(206, 55%, 11%, 1);
+--paynes-gray: hsla(206, 19%, 41%, 1);
+--cadet-gray: hsla(223, 10%, 65%, 1);
+--misty-rose: hsla(4, 73%, 93%, 1);
+--desert-sand: hsla(24, 50%, 79%, 1); */
+
+/* SCSS HEX */
+/* $rich-black: #0d1f2dff;
+$paynes-gray: #546a7bff;
+$cadet-gray: #9ea3b0ff;
+$misty-rose: #fae1dfff;
+$desert-sand: #e4c3adff; */
+
+/* SCSS HSL */
+/* $rich-black: hsla(206, 55%, 11%, 1);
+$paynes-gray: hsla(206, 19%, 41%, 1);
+$cadet-gray: hsla(223, 10%, 65%, 1);
+$misty-rose: hsla(4, 73%, 93%, 1);
+$desert-sand: hsla(24, 50%, 79%, 1); */
+
+/* SCSS RGB */
+/* $rich-black: rgba(13, 31, 45, 1);
+$paynes-gray: rgba(84, 106, 123, 1);
+$cadet-gray: rgba(158, 163, 176, 1);
+$misty-rose: rgba(250, 225, 223, 1);
+$desert-sand: rgba(228, 195, 173, 1); */
+
+/* SCSS Gradient */
+/* $gradient-top: linear-gradient(0deg, #0d1f2dff, #546a7bff, #9ea3b0ff, #fae1dfff, #e4c3adff);
+$gradient-right: linear-gradient(90deg, #0d1f2dff, #546a7bff, #9ea3b0ff, #fae1dfff, #e4c3adff);
+$gradient-bottom: linear-gradient(180deg, #0d1f2dff, #546a7bff, #9ea3b0ff, #fae1dfff, #e4c3adff);
+$gradient-left: linear-gradient(270deg, #0d1f2dff, #546a7bff, #9ea3b0ff, #fae1dfff, #e4c3adff);
+$gradient-top-right: linear-gradient(45deg, #0d1f2dff, #546a7bff, #9ea3b0ff, #fae1dfff, #e4c3adff);
+$gradient-bottom-right: linear-gradient(135deg, #0d1f2dff, #546a7bff, #9ea3b0ff, #fae1dfff, #e4c3adff);
+$gradient-top-left: linear-gradient(225deg, #0d1f2dff, #546a7bff, #9ea3b0ff, #fae1dfff, #e4c3adff);
+$gradient-bottom-left: linear-gradient(315deg, #0d1f2dff, #546a7bff, #9ea3b0ff, #fae1dfff, #e4c3adff);
+$gradient-radial: radial-gradient(#0d1f2dff, #546a7bff, #9ea3b0ff, #fae1dfff, #e4c3adff); */

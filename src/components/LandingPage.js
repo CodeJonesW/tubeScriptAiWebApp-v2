@@ -10,19 +10,20 @@ import {
   ListItem,
   ListItemText,
 } from "@mui/material";
-import "../css/LandingPage.css";
+import { useTheme } from "@mui/material/styles";
 import GoalIllustration from "../assets/images/my_goal_creator_landing_page_img_1.webp";
 
 const LandingPage = ({ displayComponent }) => {
+  const theme = useTheme();
+
   return (
     <Box className="landing-page">
-      {/* Hero Section */}
       <Box
         sx={{
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #f5f7fa, #c3cfe2)",
+          background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
           padding: {
             xs: "50px 20px",
             sm: "80px 40px",
@@ -42,13 +43,18 @@ const LandingPage = ({ displayComponent }) => {
                   fontWeight: "bold",
                   marginBottom: "20px",
                   textAlign: "left",
+                  color: theme.palette.text.primary,
                 }}
               >
                 My Goal Creator
               </Typography>
               <Typography
                 variant="body1"
-                sx={{ marginBottom: "30px", fontSize: "18px" }}
+                sx={{
+                  marginBottom: "30px",
+                  fontSize: "18px",
+                  color: theme.palette.text.secondary,
+                }}
               >
                 Set and track your goals. Dive into the plan.
               </Typography>
@@ -61,7 +67,7 @@ const LandingPage = ({ displayComponent }) => {
                 Get Started
               </Button>
               <Button
-                variant="outlined"
+                variant="contained"
                 color="secondary"
                 onClick={() => displayComponent("login")}
               >
@@ -81,7 +87,13 @@ const LandingPage = ({ displayComponent }) => {
       </Box>
 
       {/* Features Section */}
-      <Box sx={{ padding: "80px 0", backgroundColor: "#f5f5f5" }} id="features">
+      <Box
+        sx={{
+          padding: "80px 0",
+          backgroundColor: theme.palette.background.default,
+        }}
+        id="features"
+      >
         <Container maxWidth="lg">
           <Typography
             variant="h4"
@@ -89,7 +101,7 @@ const LandingPage = ({ displayComponent }) => {
               fontWeight: "bold",
               textAlign: "center",
               marginBottom: "40px",
-              color: "#333",
+              color: theme.palette.text.primary,
             }}
           >
             Features
@@ -100,18 +112,25 @@ const LandingPage = ({ displayComponent }) => {
                 elevation={6}
                 sx={{
                   padding: "20px",
-                  backgroundColor: "#ffffff",
-                  border: "1px solid #e0e0e0",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  backgroundColor: theme.palette.background.paper,
+                  border: `1px solid ${theme.palette.divider}`,
+                  boxShadow: theme.shadows[4],
+                  borderRadius: "10px",
                 }}
               >
                 <Typography
                   variant="h6"
-                  sx={{ fontWeight: "bold", color: "#007bff" }}
+                  sx={{
+                    fontWeight: "bold",
+                    color: theme.palette.text.primary,
+                  }}
                 >
                   Define Your Goal
                 </Typography>
-                <Typography variant="body1" sx={{ color: "#555" }}>
+                <Typography
+                  variant="body1"
+                  sx={{ color: theme.palette.text.secondary }}
+                >
                   Use our AI-powered tools to clearly define the path to your
                   goal.
                 </Typography>
@@ -123,40 +142,49 @@ const LandingPage = ({ displayComponent }) => {
                 elevation={6}
                 sx={{
                   padding: "20px",
-                  backgroundColor: "#ffffff",
-                  border: "1px solid #e0e0e0",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  backgroundColor: theme.palette.background.paper,
+                  border: `1px solid ${theme.palette.divider}`,
+                  boxShadow: theme.shadows[4],
+                  borderRadius: "10px",
                 }}
               >
                 <Typography
                   variant="h6"
-                  sx={{ fontWeight: "bold", color: "#007bff" }}
+                  sx={{ fontWeight: "bold", color: theme.palette.text.primary }}
                 >
                   Dive into Subtopics
                 </Typography>
-                <Typography variant="body1" sx={{ color: "#555" }}>
+                <Typography
+                  variant="body1"
+                  sx={{ color: theme.palette.text.secondary }}
+                >
                   Continue the conversation with AI without bloating your
                   current conversation.
                 </Typography>
               </Paper>
             </Grid>
+
             <Grid item xs={12} md={4}>
               <Paper
                 elevation={6}
                 sx={{
                   padding: "20px",
-                  backgroundColor: "#ffffff",
-                  border: "1px solid #e0e0e0",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  backgroundColor: theme.palette.background.paper,
+                  border: `1px solid ${theme.palette.divider}`,
+                  boxShadow: theme.shadows[4],
+                  borderRadius: "10px",
                 }}
               >
                 <Typography
                   variant="h6"
-                  sx={{ fontWeight: "bold", color: "#007bff" }}
+                  sx={{ fontWeight: "bold", color: theme.palette.text.primary }}
                 >
                   Track Progress (Coming Soon)
                 </Typography>
-                <Typography variant="body1" sx={{ color: "#555" }}>
+                <Typography
+                  variant="body1"
+                  sx={{ color: theme.palette.text.secondary }}
+                >
                   Stay on top of your progress with real-time tracking and
                   analytics.
                 </Typography>
@@ -253,8 +281,13 @@ const LandingPage = ({ displayComponent }) => {
       </Box> */}
 
       {/* Pricing Section */}
-      <Box sx={{ padding: "80px 0", backgroundColor: "#f5f5f5" }} id="pricing">
-        {" "}
+      <Box
+        sx={{
+          padding: "80px 0",
+          backgroundColor: theme.palette.background.default,
+        }}
+        id="pricing"
+      >
         <Container maxWidth="lg">
           <Typography
             variant="h4"
@@ -262,7 +295,7 @@ const LandingPage = ({ displayComponent }) => {
               fontWeight: "bold",
               textAlign: "center",
               marginBottom: "40px",
-              color: "#333",
+              color: theme.palette.text.primary,
             }}
           >
             Pricing Plans
@@ -273,9 +306,9 @@ const LandingPage = ({ displayComponent }) => {
                 elevation={6}
                 sx={{
                   padding: "30px",
-                  backgroundColor: "#ffffff",
-                  border: "1px solid #e0e0e0",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  backgroundColor: theme.palette.background.paper,
+                  border: `1px solid ${theme.palette.divider}`,
+                  boxShadow: theme.shadows[4],
                   borderRadius: "10px",
                   textAlign: "center",
                   height: "95%",
@@ -287,11 +320,19 @@ const LandingPage = ({ displayComponent }) => {
                 <Box>
                   <Typography
                     variant="h6"
-                    sx={{ fontWeight: "bold", color: "#007bff" }}
+                    sx={{
+                      fontWeight: "bold",
+                      color: theme.palette.text.primary,
+                    }}
                   >
                     Free Plan
                   </Typography>
-                  <List sx={{ color: "#555", marginBottom: "20px" }}>
+                  <List
+                    sx={{
+                      color: theme.palette.text.secondary,
+                      marginBottom: "20px",
+                    }}
+                  >
                     <ListItem>
                       <ListItemText primary="- Basic AI Goal Planning and Analysis." />
                     </ListItem>
@@ -314,14 +355,15 @@ const LandingPage = ({ displayComponent }) => {
                 </Button>
               </Paper>
             </Grid>
+
             <Grid item xs={12} md={4} mt={4} mb={4}>
               <Paper
                 elevation={6}
                 sx={{
                   padding: "30px",
-                  backgroundColor: "#ffffff",
-                  border: "1px solid #e0e0e0",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  backgroundColor: theme.palette.background.paper,
+                  border: `1px solid ${theme.palette.divider}`,
+                  boxShadow: theme.shadows[4],
                   borderRadius: "10px",
                   textAlign: "center",
                   height: "95%",
@@ -333,11 +375,19 @@ const LandingPage = ({ displayComponent }) => {
                 <Box>
                   <Typography
                     variant="h6"
-                    sx={{ fontWeight: "bold", color: "#007bff" }}
+                    sx={{
+                      fontWeight: "bold",
+                      color: theme.palette.text.primary,
+                    }}
                   >
                     Pro Plan
                   </Typography>
-                  <List sx={{ color: "#555", marginBottom: "20px" }}>
+                  <List
+                    sx={{
+                      color: theme.palette.text.secondary,
+                      marginBottom: "20px",
+                    }}
+                  >
                     <ListItem>
                       <ListItemText primary="- Dive multiple levels into subtopics and get detailed insights." />
                     </ListItem>
@@ -351,7 +401,7 @@ const LandingPage = ({ displayComponent }) => {
                 </Box>
 
                 <Button
-                  variant="outlined"
+                  variant="contained"
                   color="secondary"
                   sx={{
                     marginTop: "20px",
@@ -370,6 +420,7 @@ const LandingPage = ({ displayComponent }) => {
       <Box
         sx={{
           padding: "80px 0",
+          background: theme.palette.background.paper,
           textAlign: "center",
         }}
         id="cta"
@@ -377,7 +428,11 @@ const LandingPage = ({ displayComponent }) => {
         <Container maxWidth="lg">
           <Typography
             variant="h4"
-            sx={{ fontWeight: "bold", marginBottom: "20px" }}
+            sx={{
+              fontWeight: "bold",
+              marginBottom: "20px",
+              color: theme.palette.text.primary,
+            }}
           >
             Ready to Achieve Your Goals?
           </Typography>
@@ -385,6 +440,10 @@ const LandingPage = ({ displayComponent }) => {
             variant="contained"
             size="large"
             onClick={() => displayComponent("register")}
+            sx={{
+              backgroundColor: theme.palette.primary.main,
+              color: theme.palette.primary.contrastText,
+            }}
           >
             Get Started for Free
           </Button>
@@ -395,8 +454,8 @@ const LandingPage = ({ displayComponent }) => {
       <Box
         sx={{
           padding: "40px 0",
-          backgroundColor: "#333",
-          color: "#fff",
+          backgroundColor: theme.palette.primary.main,
+          color: theme.palette.primary.contrastText,
           textAlign: "center",
         }}
         id="footer"
