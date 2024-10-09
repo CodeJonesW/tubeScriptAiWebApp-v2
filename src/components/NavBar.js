@@ -24,7 +24,10 @@ const NavBar = ({ handleLogout }) => {
   };
 
   return (
-    <AppBar color="secondary" position="static">
+    <AppBar
+      sx={{ backgroundColor: theme.palette.background.paper }}
+      position="static"
+    >
       <Toolbar>
         <Typography
           variant="h6"

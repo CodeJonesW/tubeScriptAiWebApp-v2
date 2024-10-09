@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, Card, Button, List, ListItem } from "@mui/material";
 import Results from "./Results";
-import "../css/Goals.css";
 import { useSelector, useDispatch } from "react-redux";
 import { getGoal, clearGoal } from "../redux/slices/goalSlice";
 
@@ -18,7 +17,7 @@ const GoalsList = ({ goals }) => {
   };
 
   return (
-    <Box className="goals-list">
+    <Box>
       {goal ? (
         <Box>
           <Box style={{ display: "flex", justifyContent: "center" }}>
@@ -35,9 +34,9 @@ const GoalsList = ({ goals }) => {
             {goals.length > 0 ? (
               goals.map((goal, index) => (
                 <ListItem
+                  color="primary"
                   onClick={() => handleShowGoal(goal.GoalId)}
                   key={index}
-                  className="goal-item"
                 >
                   {goal.goal_name}
                 </ListItem>

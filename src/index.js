@@ -41,18 +41,30 @@ const theme = createTheme({
     fontFamily: "Roboto, sans-serif",
     h1: {
       fontWeight: 700,
-      color: "#fae1df", // Misty Rose for large headers in dark mode
+      color: "#fae1df",
+    },
+    h2: {
+      fontWeight: "bold",
+      color: "#fae1df",
+    },
+    h3: {
+      fontWeight: "bold",
+      color: "#fae1df",
     },
     h4: {
       fontWeight: "bold",
-      color: "#e4c3ad", // Desert Sand for smaller headings
+      color: "#fae1df",
+    },
+    h5: {
+      fontWeight: "bold",
+      color: "#fae1df",
     },
     body1: {
-      color: "#fae1df", // Misty Rose for body text in dark mode
+      color: "#e4c3ad",
     },
     button: {
       textTransform: "none",
-      color: "#fae1df", // Button text in Misty Rose for contrast
+      color: "#fae1df",
     },
   },
 });

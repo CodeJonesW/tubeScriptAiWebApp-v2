@@ -1,9 +1,0 @@
-.goal-item {
-  cursor: pointer;
-  color: blue;
-  padding: 5px;
-}
-
-.goal-item:hover {
-  color: darkblue;
-}

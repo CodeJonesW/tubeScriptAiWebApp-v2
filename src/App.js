@@ -147,7 +147,7 @@ const App = () => {
             alignItems: "center",
             justifyContent: "flex-start",
             overflow: "scroll",
-            background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+            background: theme.palette.primary.main,
           }}
         >
           <Box style={{ width: "100%" }}>

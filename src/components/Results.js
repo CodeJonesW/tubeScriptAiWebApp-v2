@@ -14,7 +14,8 @@ const Results = ({ result }) => {
     <div
       style={{
         textAlign: "left",
-        backgroundColor: theme.palette.secondary.main,
+        backgroundColor: theme.palette.background.paper,
+        color: theme.palette.text.primary,
         padding: "20px",
         borderRadius: "8px",
         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
