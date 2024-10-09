@@ -64,6 +64,12 @@ const Register = ({ onRegister }) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              sx={{
+                "& input:-webkit-autofill": {
+                  WebkitBoxShadow: `0 0 0 1000px ${theme.palette.background.paper} inset`,
+                  WebkitTextFillColor: theme.palette.text.primary,
+                },
+              }}
             />
           </Box>
           <Box className="input-group">
@@ -73,6 +79,12 @@ const Register = ({ onRegister }) => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              sx={{
+                "& input:-webkit-autofill": {
+                  WebkitBoxShadow: `0 0 0 1000px ${theme.palette.background.paper} inset`,
+                  WebkitTextFillColor: theme.palette.text.primary,
+                },
+              }}
             />
           </Box>
           <Button type="submit" variant="contained" color="primary">
