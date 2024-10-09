@@ -75,7 +75,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <Box sx={{ width: "100%", height: "100%" }}>
       {!token ? (
         <Box>
           {displayComponent === "welcome" ? (
@@ -138,11 +138,14 @@ const App = () => {
         </Box>
       ) : (
         <Box
+          className="main"
           sx={{
+            width: "100%",
+            height: "100%",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "flex-start",
             overflow: "scroll",
             background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
           }}
@@ -169,7 +172,7 @@ const App = () => {
           {!showGoals ? <Analyze /> : <Goals goals={goals} />}
         </Box>
       )}
-    </>
+    </Box>
   );
 };
 
