@@ -25,7 +25,6 @@ const Profile = ({ user, isShowingGoals, showGoals, showGoalCreator }) => {
           <span>
             <Button
               style={{ marginTop: "16px", maxWidth: "144px" }}
-              className="primary-button"
               onClick={showGoals}
               variant="contained"
             >
@@ -38,7 +37,6 @@ const Profile = ({ user, isShowingGoals, showGoals, showGoalCreator }) => {
           <span>
             <Button
               style={{ marginTop: "16px", maxWidth: "144px" }}
-              className="primary-button"
               onClick={showGoalCreator}
               variant="contained"
             >

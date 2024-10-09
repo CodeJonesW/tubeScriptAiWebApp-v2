@@ -86,12 +86,7 @@ const InputForm = ({ onSubmit, loading }) => {
             </FormControl>
           </Box>
           <Box style={{ display: "flex", justifyContent: "center" }}>
-            <Button
-              type="submit"
-              variant={"contained"}
-              className="primary-button"
-              disabled={loading}
-            >
+            <Button type="submit" variant={"contained"} disabled={loading}>
               {loading ? <CircularProgress size={24} /> : "Show me the way"}
             </Button>
           </Box>
