@@ -32,6 +32,7 @@ const App = () => {
       } catch (error) {
         console.error("Error fetching profile:", error);
         dispatch(clearAuthToken());
+        setDisplayComponent("welcome");
       }
     }
   }, [token, dispatch]);

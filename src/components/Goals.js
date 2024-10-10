@@ -20,7 +20,13 @@ const GoalsList = ({ goals }) => {
     <Box>
       {goal ? (
         <Box>
-          <Box style={{ display: "flex", justifyContent: "center" }}>
+          <Box
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              padding: "24px",
+            }}
+          >
             <Button
               onClick={handleClearGoal}
               variant="contained"
