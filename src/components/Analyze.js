@@ -5,31 +5,13 @@ import { getProfile } from "../redux/slices/profileSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Box } from "@mui/material";
 
-function usePrevious(value) {
-  const ref = useRef();
-  useEffect(() => {
-    ref.current = value;
-  }, [value]);
-  return ref.current;
-}
-
 const Analyze = () => {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.authSlice);
-  const { latestGoal } = useSelector((state) => state.profileSlice);
-  const previousGoal = usePrevious(latestGoal);
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
   const [buffer, setBuffer] = useState("");
   const [refreshProfile, setRefreshProfile] = useState(false);
-
-  useEffect(() => {
-    if (previousGoal !== latestGoal) {
-      if (latestGoal !== null) {
-        setResult(latestGoal.plan);
-      }
-    }
-  }, [latestGoal, previousGoal]);
 
   useEffect(() => {
     if (refreshProfile) {
@@ -150,10 +132,10 @@ const Analyze = () => {
         flexDirection: "column",
       }}
     >
+      {result ? <Results result={result} /> : null}
       <Box>
         <InputForm loading={loading} onSubmit={handleAnalyze} />
       </Box>
-      {result ? <Results result={result} /> : null}
     </Box>
   );
 };
