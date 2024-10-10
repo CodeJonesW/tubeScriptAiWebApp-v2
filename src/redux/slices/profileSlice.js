@@ -37,6 +37,7 @@ const profileSlice = createSlice({
         state.goals = goals;
       })
       .addCase(getProfile.rejected, (state, action) => {
+        console.log("Error fetching profile:", action);
         state.error = true;
       });
   },
