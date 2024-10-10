@@ -86,46 +86,13 @@ const Analyze = () => {
   };
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        width: "100%",
-        height: "100%",
-      }}
-    >
+    <Box sx={{ width: "100%", height: "100%" }}>
+      <Results result={result} />
       <Box
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          width: "100%",
-          height: "90%",
-        }}
-      >
-        <Box
-          sx={{
-            height: "95%",
-            width: "90%",
-            borderRadius: "20px",
-            backgroundColor: (theme) => theme.palette.background.default,
-          }}
-        >
-          {/* Render results */}
-          <Results result={result} />
-        </Box>
-      </Box>
-      <Box sx={{ height: "5%", width: "100%" }}></Box>
-
-      {/* Input form */}
-      <Box
-        sx={{
-          width: "100%",
-          borderRadius: "20px",
-          boxShadow: "0 -4px 8px rgba(0, 0, 0, 0.1)", // Shadow to distinguish form
+          boxShadow: "0 -4px 8px rgba(0, 0, 0, 0.1)",
           position: "sticky",
-          bottom: 0, // Stick to the bottom
+          bottom: 0,
         }}
       >
         <InputForm loading={loading} onSubmit={handleAnalyze} />

@@ -149,7 +149,7 @@ const App = () => {
             background: theme.palette.primary.main,
           }}
         >
-          <Box style={{ width: "100%", height: "8%" }}>
+          <Box style={{ width: "100%", height: "10%" }}>
             <NavBar
               showGoals={handleShowGoals}
               showGoalCreator={handleShowGoalCreator}
@@ -157,7 +157,7 @@ const App = () => {
               handleLogout={handleLogout}
             />
           </Box>
-          <Box sx={{ padding: "16px", height: "92%", width: "100%" }}>
+          <Box sx={{ height: "95%", width: "100%" }}>
             {!showGoals ? <Analyze /> : <Goals goals={goals} />}
           </Box>
         </Box>

@@ -26,13 +26,11 @@ const Results = ({ result }) => {
       ref={resultsRef} // Attach the ref to the results container
       sx={{
         textAlign: "left",
-        backgroundColor: theme.palette.background.paper,
         color: theme.palette.text.primary,
         padding: "16px",
         borderRadius: 1,
         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Slight shadow
-        width: "100%",
-        height: "100%", // Ensure the box fills available height
+        height: "80%", // Ensure the box fills available height
         overflowY: "auto", // Enable scrolling within this box
         overflowX: "hidden", // Hide horizontal scrollbar
       }}
