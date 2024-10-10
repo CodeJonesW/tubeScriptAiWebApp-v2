@@ -151,7 +151,12 @@ const App = () => {
           }}
         >
           <Box style={{ width: "100%" }}>
-            <NavBar handleLogout={handleLogout} />
+            <NavBar
+              showGoals={handleShowGoals}
+              showGoalCreator={handleShowGoalCreator}
+              isShowingGoals={showGoals}
+              handleLogout={handleLogout}
+            />
             <Box
               sx={{
                 display: "flex",
@@ -160,14 +165,7 @@ const App = () => {
                 justifyContent: "center",
                 padding: "20px",
               }}
-            >
-              <Profile
-                user={user}
-                showGoals={handleShowGoals}
-                showGoalCreator={handleShowGoalCreator}
-                isShowingGoals={showGoals}
-              />
-            </Box>
+            ></Box>
           </Box>
           {!showGoals ? <Analyze /> : <Goals goals={goals} />}
         </Box>

@@ -11,7 +11,13 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { useTheme } from "@mui/material/styles";
 
-const NavBar = ({ handleLogout }) => {
+const NavBar = ({
+  handleLogout,
+  showGoals,
+  showGoalCreator,
+  isShowingGoals,
+  showProfile,
+}) => {
   const theme = useTheme();
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -53,6 +59,10 @@ const NavBar = ({ handleLogout }) => {
             onClose={handleMenuClose}
           >
             <MenuItem onClick={handleLogout}>Logout</MenuItem>
+            <MenuItem onClick={isShowingGoals ? showGoalCreator : showGoals}>
+              {isShowingGoals ? "Create" : "View Goals"}
+            </MenuItem>
+            <MenuItem onClick={showProfile}>Profile</MenuItem>
           </Menu>
         </Box>
       </Toolbar>

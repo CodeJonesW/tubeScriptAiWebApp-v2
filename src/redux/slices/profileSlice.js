@@ -22,6 +22,7 @@ const profileSlice = createSlice({
     goals: [],
     loading: false,
     error: false,
+    latestGoal: null,
   },
   reducers: {
     // define any additional synchronous reducers here later
@@ -32,9 +33,10 @@ const profileSlice = createSlice({
         state.loading = true;
       })
       .addCase(getProfile.fulfilled, (state, action) => {
-        const { user, goals } = action.payload;
+        const { user, goals, latestGoal } = action.payload;
         state.user = user;
         state.goals = goals;
+        state.latestGoal = latestGoal;
       })
       .addCase(getProfile.rejected, (state, action) => {
         state.error = true;
