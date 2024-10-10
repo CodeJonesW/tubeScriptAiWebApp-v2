@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import InputForm from "./InputForm";
 import Results from "./Results";
 import { getProfile } from "../redux/slices/profileSlice";
@@ -20,15 +20,13 @@ const Analyze = () => {
     }
   }, [refreshProfile, token, dispatch]);
 
-  const handleAnalyze = (goal, prompt, timeline) => {
+  const handleAnalyze = (goal, prompt = "", timeline = "1 year") => {
     setLoading(true);
     setResult("");
     setBuffer("");
 
     try {
       const token = localStorage.getItem("authToken");
-
-      // Open EventSource connection with query parameters
       const eventSource = new EventSource(
         `/api/analyze?goal=${encodeURIComponent(
           goal
@@ -37,84 +35,50 @@ const Analyze = () => {
         )}&token=${encodeURIComponent(token)}`
       );
 
-      // Listen for streaming results
       eventSource.onmessage = (event) => {
         let newChunk = event.data;
-        // console.log("Received chunk in UI:", newChunk);
-        if (newChunk === "event: done") {
-          // console.log("Analysis complete.");
-          return;
-        }
+        if (newChunk === "event: done") return;
 
-        // Concatenate incoming markdown chunks and immediately update the result incrementally
         setBuffer((prevBuffer) => {
           let updatedBuffer = prevBuffer + (newChunk === "" ? "\n" : newChunk);
-
-          // Split lines to handle bullet points and headings
           const lines = updatedBuffer.split("\n");
 
-          let completeContent = ""; // To accumulate complete lines
-          let remainingBuffer = ""; // To store incomplete markdown
+          let completeContent = "";
+          let remainingBuffer = "";
 
           lines.forEach((line, index) => {
-            // Check if a line starts with a markdown heading or bullet point
             if (/^\s*#{1,6}\s/.test(line) || /^\s*[-*]\s/.test(line)) {
-              // If it's a heading or bullet point, ensure it starts cleanly
               if (index === lines.length - 1) {
-                remainingBuffer = line; // Incomplete line stays in buffer
+                remainingBuffer = line;
               } else {
-                completeContent += line + "\n"; // Add complete line to content
+                completeContent += line + "\n";
               }
             } else {
-              // For non-heading and non-bullet lines, handle normally
               if (index === lines.length - 1) {
-                remainingBuffer = line; // Incomplete line stays in buffer
+                remainingBuffer = line;
               } else {
                 completeContent += line + "\n";
               }
             }
           });
 
-          // Update the result with the complete content
           setResult((prevResult) => prevResult + completeContent);
-
-          // Return the remaining incomplete buffer for the next chunk
           return remainingBuffer || "";
         });
       };
 
-      // Handle stream closing or errors
       eventSource.onerror = (error) => {
         console.error("Error during analysis:", error);
-        console.log(buffer);
         eventSource.close();
         setBuffer((prevBuffer) => {
-          // console.log("Final buffer:", prevBuffer);
           if (prevBuffer) {
             setResult((prevResult) => prevResult + prevBuffer);
           }
-          return ""; // Clear buffer
-        });
-        setLoading(false); // Stop loading when stream is done or errored
-        setRefreshProfile(true);
-      };
-
-      eventSource.onopen = () => {
-        // console.log("SSE connection opened.");
-      };
-      // Close the stream naturally when done
-      eventSource.addEventListener("close", () => {
-        // console.log("Stream closed");
-        // If there's any remaining data in the buffer, add it to the result
-        setBuffer((prevBuffer) => {
-          // console.log("Final buffer:", prevBuffer);
-          if (prevBuffer) {
-            setResult((prevResult) => prevResult + prevBuffer);
-          }
-          return ""; // Clear buffer
+          return "";
         });
         setLoading(false);
-      });
+        setRefreshProfile(true);
+      };
     } catch (error) {
       setLoading(false);
       console.error("Error during analysis:", error);
@@ -125,15 +89,45 @@ const Analyze = () => {
     <Box
       sx={{
         display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
         width: "100%",
         height: "100%",
-        justifyContent: "flex-start",
-        alignItems: "center",
-        flexDirection: "column",
       }}
     >
-      {result ? <Results result={result} /> : null}
-      <Box>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          width: "100%",
+          height: "90%",
+        }}
+      >
+        <Box
+          sx={{
+            height: "95%",
+            width: "90%",
+            borderRadius: "20px",
+            backgroundColor: (theme) => theme.palette.background.default,
+          }}
+        >
+          {/* Render results */}
+          <Results result={result} />
+        </Box>
+      </Box>
+      <Box sx={{ height: "5%", width: "100%" }}></Box>
+
+      {/* Input form */}
+      <Box
+        sx={{
+          width: "100%",
+          borderRadius: "20px",
+          boxShadow: "0 -4px 8px rgba(0, 0, 0, 0.1)", // Shadow to distinguish form
+          position: "sticky",
+          bottom: 0, // Stick to the bottom
+        }}
+      >
         <InputForm loading={loading} onSubmit={handleAnalyze} />
       </Box>
     </Box>

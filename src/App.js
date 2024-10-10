@@ -146,28 +146,20 @@ const App = () => {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "flex-start",
-            overflow: "scroll",
             background: theme.palette.primary.main,
           }}
         >
-          <Box style={{ width: "100%" }}>
+          <Box style={{ width: "100%", height: "8%" }}>
             <NavBar
               showGoals={handleShowGoals}
               showGoalCreator={handleShowGoalCreator}
               isShowingGoals={showGoals}
               handleLogout={handleLogout}
             />
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "20px",
-              }}
-            ></Box>
           </Box>
-          {!showGoals ? <Analyze /> : <Goals goals={goals} />}
+          <Box sx={{ padding: "16px", height: "92%", width: "100%" }}>
+            {!showGoals ? <Analyze /> : <Goals goals={goals} />}
+          </Box>
         </Box>
       )}
     </Box>
