@@ -7,12 +7,10 @@ import CheckCircleOutlinedIcon from "@mui/icons-material/CheckCircleOutlined";
 const InputForm = ({ onSubmit, loading }) => {
   const theme = useTheme();
   const [goal, setGoal] = useState("");
-  const [prompt, setPrompt] = useState("");
-  const [timeline, setTimeline] = useState("1 year");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await onSubmit(goal, prompt, timeline);
+    await onSubmit(goal);
   };
 
   return (

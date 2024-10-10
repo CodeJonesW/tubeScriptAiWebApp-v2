@@ -69,6 +69,7 @@ const Analyze = () => {
 
       eventSource.onerror = (error) => {
         console.error("Error during analysis:", error);
+        console.log("buffer", buffer);
         eventSource.close();
         setBuffer((prevBuffer) => {
           if (prevBuffer) {

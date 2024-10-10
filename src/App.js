@@ -4,7 +4,6 @@ import { Button, Box } from "@mui/material";
 import "./App.css";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import {
-  Profile,
   LandingPage,
   Register,
   Login,
@@ -20,7 +19,7 @@ const App = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.authSlice);
-  const { user, goals } = useSelector((state) => state.profileSlice);
+  const { goals } = useSelector((state) => state.profileSlice);
   const [showGoals, setShowGoals] = useState(false);
   const [displayComponent, setDisplayComponent] = useState("welcome");
 
