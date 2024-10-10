@@ -30,9 +30,8 @@ const App = () => {
         dispatch(getProfile(token));
         setDisplayComponent("analyze");
       } catch (error) {
-        console.error("Error fetching profile:", error);
-        dispatch(clearAuthToken());
         setDisplayComponent("welcome");
+        dispatch(clearAuthToken());
       }
     }
   }, [token, dispatch]);
@@ -50,8 +49,8 @@ const App = () => {
   };
 
   const handleLogout = () => {
-    dispatch(clearAuthToken());
     setDisplayComponent("welcome");
+    dispatch(clearAuthToken());
   };
 
   const BackButton = () => {

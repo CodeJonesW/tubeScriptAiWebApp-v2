@@ -1,17 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { clearAuthToken } from "./authSlice";
 import axios from "axios";
 
 export const getProfile = createAsyncThunk(
   "profile/getProfile",
-  async (token) => {
-    const response = await axios.get(`api/profile`, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return response.data;
+  async (token, { rejectWithValue, dispatch }) => {
+    try {
+      const response = await axios.get(`api/profile`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      dispatch(clearAuthToken());
+      return rejectWithValue(error.response.data);
+    }
   }
 );
 
