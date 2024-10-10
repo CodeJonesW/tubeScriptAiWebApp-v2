@@ -40,6 +40,8 @@ const Analyze = () => {
         if (newChunk === "event: done") return;
 
         setBuffer((prevBuffer) => {
+          console.log("prv + new", prevBuffer + newChunk);
+
           let updatedBuffer = prevBuffer + (newChunk === "" ? "\n" : newChunk);
           const lines = updatedBuffer.split("\n");
 

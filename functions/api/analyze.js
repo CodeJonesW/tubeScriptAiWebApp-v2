@@ -28,7 +28,7 @@ export async function onRequest(context) {
     ? "http://localhost:8787"
     : "https://tube-script-ai-worker.williamjonescodes.workers.dev";
 
-  const url = `${workerUrl}/api/analyze_v2`;
+  const url = `${workerUrl}/api/analyze`;
 
   const init = {
     method: "POST",
